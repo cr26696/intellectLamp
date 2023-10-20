@@ -25,6 +25,10 @@
     <el-table
       :data="tableData">
       <el-table-column
+        type="selection"
+        width="55">
+      </el-table-column>
+      <el-table-column
         fixed
         prop="id"
         label="设备ID"

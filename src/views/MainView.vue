@@ -22,19 +22,18 @@ export default {
 </script>
 
 <style>
- .el-header, .el-footer {
+ .el-header{
     background-color: #B3C0D1;
     color: #333;
     text-align: center;
-    height: 94px;
-    width: 100%;
+    height: 94px !important;
   }
 
   .el-aside {
     background-color: #D3DCE6;
     color: #333;
     text-align: center;
-    width: 233px ;
+    width: 233px !important;
   }
 
   .el-main {
@@ -42,6 +41,7 @@ export default {
     color: #333;
     text-align: center;
     position: relative;
+    padding: 0 !important;
   }
 
  #container {

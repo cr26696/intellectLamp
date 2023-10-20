@@ -8,12 +8,22 @@
     </div>
     <div id="info">
         <div id="infoHead">
-            <p class="textInfo">报警信息：</p>
-            <p>无电源电压报警</p>
+            <p class="textInfo" style="top:46px;left:45px">报警信息：</p>
+            <p class="textInfoContent" style="top:90px;left:45px">无电源电压报警</p>
         </div>
         <div id="line"></div>
         <div id="infoContent">
-            <span>阈值信息</span>
+            <p class="textInfo" style="top:218px;left:45px">阈值信息：</p>
+            <div id="thrsTable" style="top:291px;left:45px;background-color: rgb(234, 234, 253);">
+                <el-row>
+                    <el-col :span="4"><div class="grid-content"><p class="textCategory">设备id</p><br><p class="textInfoContent">5433</p></div></el-col>
+                    <el-col :span="4"><div class="grid-content"><p class="textCategory">版本号</p><br><p class="textInfoContent">0x2e</p></div></el-col>
+                    <el-col :span="4"><div class="grid-content"><p class="textCategory">灯杆号</p><br><p class="textInfoContent">A163</p></div></el-col>
+                    <el-col :span="4"><div class="grid-content"><p class="textCategory">控制器状态指令</p><br><p class="textInfoContent">·故障</p></div></el-col>
+                    <el-col :span="4"><div class="grid-content"><p class="textCategory">报警间隔时间：</p><br><p class="textInfoContent">30分钟</p></div></el-col>
+                    <el-col :span="4"><div class="grid-content"><p class="textCategory">温度传感器报警阙值：</p><br><p class="textInfoContent">101</p></div></el-col>
+                </el-row>
+            </div>
         </div>
     </div>
 </div>
@@ -34,12 +44,9 @@ export default {
 #main_container{
     position: absolute;
     width: 100%;
+    height: 100%;
 }
-#info{
-    height: 85%;
-    min-height: 600px;
-}
-#backlink{
+#backlink{//返回链接
     text-decoration: none;
     font-size: 18.75px;
     font-weight: 500;
@@ -47,15 +54,36 @@ export default {
     line-height: 27.15px;
     color: rgba(30, 170, 231, 1);
 }
+#info{//报警信息主体
+    position: absolute;
+    top: 110px;
+    left: 52px;
+    height: 85%;
+    width: 90%;
+    min-height: 600px;
+    background-color: burlywood;
+}
 #infoHead{
     min-height: 170px;
 }
-#line{
-    border: none;
-    border-top: 1px solid black;
-    margin: 0px;
+#line{//分隔线
+    border: 1px solid rgba(220, 220, 220, 1);
+    width: 93%;
+    margin: 0 auto;
 }
-.contentHeader{
+#infoContent{
+    min-height: 840px;
+}
+#thrsTable{//阈值信息表
+    position: absolute;
+    height: 266px;
+    width: 95%;
+    min-width: 1000px;
+    max-width: 1461px;
+    top: 117px;
+    margin: 0 auto;
+}
+.contentHeader{//返回导航栏，居中
     position: relative;
     left: 52px;
     top: 14px;
@@ -71,7 +99,24 @@ export default {
 .verticalCenter{
     vertical-align:middle;
 }
-.textInfo{
+.el-row {
+    margin-bottom: 20px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  .el-col {
+    border-radius: 4px;
+  }
+  .grid-content {
+    min-height: 55px;
+  }
+  .row-bg {
+    padding: 10px 0;
+    background-color: #f9fafc;
+  }
+
+.textInfo{//几种字体
     font-size: 25px;
     font-weight: 500;
     letter-spacing: 0px;
