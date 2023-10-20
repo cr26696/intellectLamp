@@ -232,7 +232,7 @@ export default {
   data: function () {
     return {
       tableData: [
-        
+
       ]
     }
   }

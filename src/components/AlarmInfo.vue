@@ -23,6 +23,22 @@
                     <el-col :span="4"><div class="grid-content"><p class="textCategory">报警间隔时间：</p><br><p class="textInfoContent">30分钟</p></div></el-col>
                     <el-col :span="4"><div class="grid-content"><p class="textCategory">温度传感器报警阙值：</p><br><p class="textInfoContent">101</p></div></el-col>
                 </el-row>
+                <el-row>
+                    <el-col :span="4"><div class="grid-content"><p class="textCategory">湿度传感器报警阙值：</p><br><p class="textInfoContent">85%</p></div></el-col>
+                    <el-col :span="4"><div class="grid-content"><p class="textCategory">光照传感器报警阙值：</p><br><p class="textInfoContent">0</p></div></el-col>
+                    <el-col :span="4"><div class="grid-content"><p class="textCategory">信号强度报警阙值：</p><br><p class="textInfoContent">90%</p></div></el-col>
+                    <el-col :span="4"><div class="grid-content"><p class="textCategory">灯杆倾斜角度报警阙值：</p><br><p class="textInfoContent">35°</p></div></el-col>
+                    <el-col :span="4"><div class="grid-content"><p class="textCategory">漏电报警阙值：</p><br><p class="textInfoContent">38V</p></div></el-col>
+                    <el-col :span="4"><div class="grid-content"><p class="textCategory">上报周期设定：</p><br><p class="textInfoContent">30分钟</p></div></el-col>
+                </el-row>
+                <el-row>
+                    <el-col :span="4"><div class="grid-content"><p class="textCategory">南向地址修改：</p><br><p class="textInfoContent">221.219.204.215</p></div></el-col>
+                    <el-col :span="4"><div class="grid-content"><p class="textCategory">修改APN：</p><br><p class="textInfoContent">APN</p></div></el-col>
+                    <el-col :span="4"><div class="grid-content"><p class="textCategory">修改PLMN：</p><br><p class="textInfoContent">PLMN</p></div></el-col>
+                    <el-col :span="4"><div class="grid-content"><p class="textCategory">更新时间：</p><br><p class="textInfoContent">2023/10/20 13:55</p></div></el-col>
+                    <el-col :span="4"><div class="grid-content"></div></el-col>
+                    <el-col :span="4"><div class="grid-content"></div></el-col>
+                </el-row>
             </div>
         </div>
     </div>
