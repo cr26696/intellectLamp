@@ -12,25 +12,26 @@
       <span><button>查询</button></span>
       <span><button>重置</button></span>
   </div>
+
   <div id="table">
-    <!-- <el-table
-      :data="tableData"
-      style="width: 100%">
-      <el-table-column
-        prop="date"
-        label="日期"
-        width="180">
-      </el-table-column>
-      <el-table-column
-        prop="name"
-        label="姓名"
-        width="180">
-      </el-table-column>
-      <el-table-column
-        prop="address"
-        label="地址">
-      </el-table-column>
-    </el-table> -->
+    <el-table
+    :data="tableData"
+    style="width: 100%">
+    <el-table-column
+      prop="date"
+      label="日期"
+      width="180">
+    </el-table-column>
+    <el-table-column
+      prop="name"
+      label="姓名"
+      width="180">
+    </el-table-column>
+    <el-table-column
+      prop="address"
+      label="地址">
+    </el-table-column>
+    </el-table>
   </div>
 
 </div>
@@ -70,5 +71,12 @@ export default {
   top: 41px;
   height: 50px;
   line-height: 0;
+}
+#table {
+  position: absolute;
+  left: 53px;
+  top: 41px;
+  line-height: 0;
+  height: 400px;
 }
 </style>

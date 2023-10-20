@@ -1,10 +1,10 @@
 <template>
 
-<el-container>
+<el-container id="container">
   <el-header>Header</el-header>
   <el-container>
-    <SideBar></SideBar>
-    <el-main><div><router-view/></div></el-main>
+    <el-aside><SideBar></SideBar></el-aside>
+    <el-main><router-view/></el-main>
   </el-container>
 </el-container>
 
@@ -22,38 +22,32 @@ export default {
 </script>
 
 <style>
-  .el-header, .el-footer {
+ .el-header, .el-footer {
     background-color: #B3C0D1;
     color: #333;
     text-align: center;
     height: 94px;
+    width: 100%;
   }
 
   .el-aside {
     background-color: #D3DCE6;
     color: #333;
     text-align: center;
-    line-height: 200px;
+    width: 233px ;
   }
 
   .el-main {
-    background-color: #E9EEF3;
+    background-color: #a4b3c4;
     color: #333;
     text-align: center;
-    line-height: 160px;
     position: relative;
   }
 
-  body > .el-container {
-    margin-bottom: 40px;
+ #container {
+    position: absolute;
+    height: 100%;
+    width: 100%;
   }
 
-  .el-container:nth-child(5) .el-aside,
-  .el-container:nth-child(6) .el-aside {
-    line-height: 260px;
-  }
-`
-  .el-container:nth-child(7) .el-aside {
-    line-height: 320px;
-  }
 </style>

@@ -1,12 +1,16 @@
 <template>
   <div id="table">
+    <div style="color:black">{{tableData[0].date}}</div>
     <el-table
-      :data="tableData"
-      style="width: 100%">
+     :data="tableData" style="width: 100%;height:100%"
+    >
       <el-table-column
         prop="date"
         label="日期"
         width="180">
+<template >
+        <div>{{tableData[0].date}}</div>
+        </template>
       </el-table-column>
       <el-table-column
         prop="name"
@@ -49,5 +53,7 @@ export default {
 </script>
 
 <style scoped lang="less">
-
+#table{
+  height: 100%;
+}
 </style>
