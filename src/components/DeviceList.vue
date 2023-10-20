@@ -22,8 +22,11 @@
         background: rgba(30, 170, 231, 1);
         box-shadow: 0px 8px 18px  rgba(0, 0, 0, 0.1);">查询</button>
     </div>
-    <el-table
-      :data="tableData">
+    <el-table id="content"
+      :data="tableData"
+      :header-cell-style="{height:'90px',padding:'0 !important'}"
+      :row-style="{height: '90px',padding:'0 !important'}"
+    >
       <el-table-column
         type="selection"
         width="55">
@@ -45,9 +48,8 @@
         width="180">
       </el-table-column>
       <el-table-column
-        prop="turnoffDelay"
         label="灭灯延时"
-        width="180">
+        width="180"><template slot-scope="scope">{{scope.row.turnoffDelay}}分钟</template>
       </el-table-column>
       <el-table-column
         prop="voltage"
@@ -210,17 +212,20 @@
         width="180">
       </el-table-column>
       <el-table-column
+        header-align="center"
         fixed="right"
         label="操作"
-        width="180">
-      <template slot-scope="scope">
+        width="320">
+        <template slot-scope="scope">
+        <router-link to="/mainview/alarmInfo">
         <el-button @click="open(scope.row)" type="text" size="small">预警信息</el-button>
+        </router-link>
         <el-button type="text" size="small">接受日志</el-button>
         <el-button type="text" size="small">指令设置</el-button>
         <el-button type="text" size="small">详情</el-button>
         <el-button type="text" size="small">修改</el-button>
         <el-button type="text" size="small">删除</el-button>
-      </template>
+        </template>
       </el-table-column>
     </el-table>
   </div>
@@ -232,7 +237,272 @@ export default {
   data: function () {
     return {
       tableData: [
-
+        {
+          id: '5453',
+          version: '0x2e',
+          lampNumb: 'A163',
+          turnoffDelay: '30',
+          voltage: '234',
+          electricity: '438',
+          power: '101',
+          powers: '98',
+          lampState: '亮',
+          sensorState: '带湿传感器',
+          temperature: '28',
+          humidness: '77.9',
+          bright: '50',
+          a: '1000',
+          v: '220',
+          lightIntensity: '0',
+          lal: '30.425508,120.312309',
+          adress: '221.219.214.202',
+          controllerMode: '正常模式',
+          controllerDuratioon: '236',
+          signalNoiseRatio: '1:3',
+          signalCoverageStrength: '85',
+          baseStationNumbe: '308',
+          controllerOnlineStatus: '故障',
+          msgSerialNumber: '291',
+          moduleInformation: 'CAT1模块',
+          mainControlChip: '雅特力',
+          timeTwo: '2023-10-12 11:57:25',
+          carState: '有车',
+          nineteenTime: 'null',
+          channel: 'null',
+          group: 'null',
+          addressTwentyThree: 'null',
+          groupNumberOne: 'null',
+          groupNumberTwo: 'null',
+          addressOne: 'null'
+        },
+        {
+          id: '5453',
+          version: '0x2e',
+          lampNumb: 'A163',
+          turnoffDelay: '30',
+          voltage: '234',
+          electricity: '438',
+          power: '101',
+          powers: '98',
+          lampState: '亮',
+          sensorState: '带湿传感器',
+          temperature: '28',
+          humidness: '77.9',
+          bright: '50',
+          a: '1000',
+          v: '220',
+          lightIntensity: '0',
+          lal: '30.425508,120.312309',
+          adress: '221.219.214.202',
+          controllerMode: '正常模式',
+          controllerDuratioon: '236',
+          signalNoiseRatio: '1:3',
+          signalCoverageStrength: '85',
+          baseStationNumbe: '308',
+          controllerOnlineStatus: '故障',
+          msgSerialNumber: '291',
+          moduleInformation: 'CAT1模块',
+          mainControlChip: '雅特力',
+          timeTwo: '2023-10-12 11:57:25',
+          carState: '有车',
+          nineteenTime: 'null',
+          channel: 'null',
+          group: 'null',
+          addressTwentyThree: 'null',
+          groupNumberOne: 'null',
+          groupNumberTwo: 'null',
+          addressOne: 'null'
+        },
+        {
+          id: '5453',
+          version: '0x2e',
+          lampNumb: 'A163',
+          turnoffDelay: '30',
+          voltage: '234',
+          electricity: '438',
+          power: '101',
+          powers: '98',
+          lampState: '亮',
+          sensorState: '带湿传感器',
+          temperature: '28',
+          humidness: '77.9',
+          bright: '50',
+          a: '1000',
+          v: '220',
+          lightIntensity: '0',
+          lal: '30.425508,120.312309',
+          adress: '221.219.214.202',
+          controllerMode: '正常模式',
+          controllerDuratioon: '236',
+          signalNoiseRatio: '1:3',
+          signalCoverageStrength: '85',
+          baseStationNumbe: '308',
+          controllerOnlineStatus: '故障',
+          msgSerialNumber: '291',
+          moduleInformation: 'CAT1模块',
+          mainControlChip: '雅特力',
+          timeTwo: '2023-10-12 11:57:25',
+          carState: '有车',
+          nineteenTime: 'null',
+          channel: 'null',
+          group: 'null',
+          addressTwentyThree: 'null',
+          groupNumberOne: 'null',
+          groupNumberTwo: 'null',
+          addressOne: 'null'
+        },
+        {
+          id: '5453',
+          version: '0x2e',
+          lampNumb: 'A163',
+          turnoffDelay: '30',
+          voltage: '234',
+          electricity: '438',
+          power: '101',
+          powers: '98',
+          lampState: '亮',
+          sensorState: '带湿传感器',
+          temperature: '28',
+          humidness: '77.9',
+          bright: '50',
+          a: '1000',
+          v: '220',
+          lightIntensity: '0',
+          lal: '30.425508,120.312309',
+          adress: '221.219.214.202',
+          controllerMode: '正常模式',
+          controllerDuratioon: '236',
+          signalNoiseRatio: '1:3',
+          signalCoverageStrength: '85',
+          baseStationNumbe: '308',
+          controllerOnlineStatus: '故障',
+          msgSerialNumber: '291',
+          moduleInformation: 'CAT1模块',
+          mainControlChip: '雅特力',
+          timeTwo: '2023-10-12 11:57:25',
+          carState: '有车',
+          nineteenTime: 'null',
+          channel: 'null',
+          group: 'null',
+          addressTwentyThree: 'null',
+          groupNumberOne: 'null',
+          groupNumberTwo: 'null',
+          addressOne: 'null'
+        },
+        {
+          id: '5453',
+          version: '0x2e',
+          lampNumb: 'A163',
+          turnoffDelay: '30',
+          voltage: '234',
+          electricity: '438',
+          power: '101',
+          powers: '98',
+          lampState: '亮',
+          sensorState: '带湿传感器',
+          temperature: '28',
+          humidness: '77.9',
+          bright: '50',
+          a: '1000',
+          v: '220',
+          lightIntensity: '0',
+          lal: '30.425508,120.312309',
+          adress: '221.219.214.202',
+          controllerMode: '正常模式',
+          controllerDuratioon: '236',
+          signalNoiseRatio: '1:3',
+          signalCoverageStrength: '85',
+          baseStationNumbe: '308',
+          controllerOnlineStatus: '故障',
+          msgSerialNumber: '291',
+          moduleInformation: 'CAT1模块',
+          mainControlChip: '雅特力',
+          timeTwo: '2023-10-12 11:57:25',
+          carState: '有车',
+          nineteenTime: 'null',
+          channel: 'null',
+          group: 'null',
+          addressTwentyThree: 'null',
+          groupNumberOne: 'null',
+          groupNumberTwo: 'null',
+          addressOne: 'null'
+        },
+        {
+          id: '5453',
+          version: '0x2e',
+          lampNumb: 'A163',
+          turnoffDelay: '30',
+          voltage: '234',
+          electricity: '438',
+          power: '101',
+          powers: '98',
+          lampState: '亮',
+          sensorState: '带湿传感器',
+          temperature: '28',
+          humidness: '77.9',
+          bright: '50',
+          a: '1000',
+          v: '220',
+          lightIntensity: '0',
+          lal: '30.425508,120.312309',
+          adress: '221.219.214.202',
+          controllerMode: '正常模式',
+          controllerDuratioon: '236',
+          signalNoiseRatio: '1:3',
+          signalCoverageStrength: '85',
+          baseStationNumbe: '308',
+          controllerOnlineStatus: '故障',
+          msgSerialNumber: '291',
+          moduleInformation: 'CAT1模块',
+          mainControlChip: '雅特力',
+          timeTwo: '2023-10-12 11:57:25',
+          carState: '有车',
+          nineteenTime: 'null',
+          channel: 'null',
+          group: 'null',
+          addressTwentyThree: 'null',
+          groupNumberOne: 'null',
+          groupNumberTwo: 'null',
+          addressOne: 'null'
+        },
+        {
+          id: '5453',
+          version: '0x2e',
+          lampNumb: 'A163',
+          turnoffDelay: '30',
+          voltage: '234',
+          electricity: '438',
+          power: '101',
+          powers: '98',
+          lampState: '亮',
+          sensorState: '带湿传感器',
+          temperature: '28',
+          humidness: '77.9',
+          bright: '50',
+          a: '1000',
+          v: '220',
+          lightIntensity: '0',
+          lal: '30.425508,120.312309',
+          adress: '221.219.214.202',
+          controllerMode: '正常模式',
+          controllerDuratioon: '236',
+          signalNoiseRatio: '1:3',
+          signalCoverageStrength: '85',
+          baseStationNumbe: '308',
+          controllerOnlineStatus: '故障',
+          msgSerialNumber: '291',
+          moduleInformation: 'CAT1模块',
+          mainControlChip: '雅特力',
+          timeTwo: '2023-10-12 11:57:25',
+          carState: '有车',
+          nineteenTime: 'null',
+          channel: 'null',
+          group: 'null',
+          addressTwentyThree: 'null',
+          groupNumberOne: 'null',
+          groupNumberTwo: 'null',
+          addressOne: 'null'
+        }
       ]
     }
   }
@@ -244,7 +514,17 @@ export default {
   height: 100%;
 }
 #contentHeader{
-  height: 50px;
+  position: absolute;
+  top: 41px;
+  left: 53px;
+  width: 90%;
+}
+#content{
+  position: absolute;
+  top: 112px;
+  left: 53px;
+  width: 90%;
+  height: 775px;
 }
 #textDeviceID{
   font-size: 20.83px;

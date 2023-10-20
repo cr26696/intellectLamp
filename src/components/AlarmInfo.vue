@@ -2,7 +2,7 @@
 <div id="main_container">
     <div class="contentHeader">
         <span class="verticalCenter" style="width: 37px;"></span>
-        <router-link to="" class="verticalCenter" id="backlink">《 返回上一页</router-link>
+        <router-link to="/mainview/deviceList" class="verticalCenter" id="backlink">《 返回上一页</router-link>
         <span class="verticalCenter" style="width: 54px;"></span>
         <span class="verticalCenter textInfo" >预警信息</span>
     </div>
