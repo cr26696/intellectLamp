@@ -2,7 +2,7 @@
 <div id="main_container">
     <div class="contentHeader">
         <span class="verticalCenter" style="width: 37px;"></span>
-        <router-link to="" class="verticalCenter" id="backlink">《 返回上一页</router-link>
+        <router-link to="/mainview/deviceList" class="verticalCenter" id="backlink">《 返回上一页</router-link>
         <span class="verticalCenter" style="width: 54px;"></span>
         <span class="verticalCenter textInfo" >预警信息</span>
     </div>
@@ -16,26 +16,26 @@
             <p class="textInfo" style="top:218px;left:45px">阈值信息：</p>
             <div id="thrsTable" style="top:291px;left:45px;background-color: rgb(234, 234, 253);">
                 <el-row>
-                    <el-col :span="4"><div class="grid-content"><p class="textCategory">设备id</p><br><p class="textInfoContent">5433</p></div></el-col>
-                    <el-col :span="4"><div class="grid-content"><p class="textCategory">版本号</p><br><p class="textInfoContent">0x2e</p></div></el-col>
-                    <el-col :span="4"><div class="grid-content"><p class="textCategory">灯杆号</p><br><p class="textInfoContent">A163</p></div></el-col>
-                    <el-col :span="4"><div class="grid-content"><p class="textCategory">控制器状态指令</p><br><p class="textInfoContent">·故障</p></div></el-col>
-                    <el-col :span="4"><div class="grid-content"><p class="textCategory">报警间隔时间：</p><br><p class="textInfoContent">30分钟</p></div></el-col>
-                    <el-col :span="4"><div class="grid-content"><p class="textCategory">温度传感器报警阙值：</p><br><p class="textInfoContent">101</p></div></el-col>
+                    <el-col :span="4"><div class="grid-content"><p class="textCategory">设备id</p><br><p class="textInfoContent">{{ deviceIdImei }}</p></div></el-col>
+                    <el-col :span="4"><div class="grid-content"><p class="textCategory">版本号</p><br><p class="textInfoContent">{{ version }}</p></div></el-col>
+                    <el-col :span="4"><div class="grid-content"><p class="textCategory">灯杆号</p><br><p class="textInfoContent">{{  }}</p></div></el-col>
+                    <el-col :span="4"><div class="grid-content"><p class="textCategory">控制器状态指令</p><br><p class="textInfoContent">{{ controllerStatusInstruction }}</p></div></el-col>
+                    <el-col :span="4"><div class="grid-content"><p class="textCategory">报警间隔时间：</p><br><p class="textInfoContent">{{ alarmInterva }}</p></div></el-col>
+                    <el-col :span="4"><div class="grid-content"><p class="textCategory">温度传感器报警阙值：</p><br><p class="textInfoContent">{{ temperatureWarning }}</p></div></el-col>
                 </el-row>
                 <el-row>
-                    <el-col :span="4"><div class="grid-content"><p class="textCategory">湿度传感器报警阙值：</p><br><p class="textInfoContent">85%</p></div></el-col>
-                    <el-col :span="4"><div class="grid-content"><p class="textCategory">光照传感器报警阙值：</p><br><p class="textInfoContent">0</p></div></el-col>
-                    <el-col :span="4"><div class="grid-content"><p class="textCategory">信号强度报警阙值：</p><br><p class="textInfoContent">90%</p></div></el-col>
-                    <el-col :span="4"><div class="grid-content"><p class="textCategory">灯杆倾斜角度报警阙值：</p><br><p class="textInfoContent">35°</p></div></el-col>
-                    <el-col :span="4"><div class="grid-content"><p class="textCategory">漏电报警阙值：</p><br><p class="textInfoContent">38V</p></div></el-col>
-                    <el-col :span="4"><div class="grid-content"><p class="textCategory">上报周期设定：</p><br><p class="textInfoContent">30分钟</p></div></el-col>
+                    <el-col :span="4"><div class="grid-content"><p class="textCategory">湿度传感器报警阙值：</p><br><p class="textInfoContent">{{ humidityWarning }}</p></div></el-col>
+                    <el-col :span="4"><div class="grid-content"><p class="textCategory">光照传感器报警阙值：</p><br><p class="textInfoContent">{{ lightWarning }}</p></div></el-col>
+                    <el-col :span="4"><div class="grid-content"><p class="textCategory">信号强度报警阙值：</p><br><p class="textInfoContent">{{ signalStrengthWarning }}</p></div></el-col>
+                    <el-col :span="4"><div class="grid-content"><p class="textCategory">灯杆倾斜角度报警阙值：</p><br><p class="textInfoContent">{{ lightPoleTiltWarning }}</p></div></el-col>
+                    <el-col :span="4"><div class="grid-content"><p class="textCategory">漏电报警阙值：</p><br><p class="textInfoContent">{{ leakageAlarm }}</p></div></el-col>
+                    <el-col :span="4"><div class="grid-content"><p class="textCategory">上报周期设定：</p><br><p class="textInfoContent">{{ reportCycleSetting }}</p></div></el-col>
                 </el-row>
                 <el-row>
-                    <el-col :span="4"><div class="grid-content"><p class="textCategory">南向地址修改：</p><br><p class="textInfoContent">221.219.204.215</p></div></el-col>
-                    <el-col :span="4"><div class="grid-content"><p class="textCategory">修改APN：</p><br><p class="textInfoContent">APN</p></div></el-col>
-                    <el-col :span="4"><div class="grid-content"><p class="textCategory">修改PLMN：</p><br><p class="textInfoContent">PLMN</p></div></el-col>
-                    <el-col :span="4"><div class="grid-content"><p class="textCategory">更新时间：</p><br><p class="textInfoContent">2023/10/20 13:55</p></div></el-col>
+                    <el-col :span="4"><div class="grid-content"><p class="textCategory">南向地址修改：</p><br><p class="textInfoContent">{{  }}</p></div></el-col>
+                    <el-col :span="4"><div class="grid-content"><p class="textCategory">修改APN：</p><br><p class="textInfoContent">{{ apn }}</p></div></el-col>
+                    <el-col :span="4"><div class="grid-content"><p class="textCategory">修改PLMN：</p><br><p class="textInfoContent">{{ plmn }}</p></div></el-col>
+                    <el-col :span="4"><div class="grid-content"><p class="textCategory">更新时间：</p><br><p class="textInfoContent">{{  }}</p></div></el-col>
                     <el-col :span="4"><div class="grid-content"></div></el-col>
                     <el-col :span="4"><div class="grid-content"></div></el-col>
                 </el-row>
@@ -50,7 +50,19 @@ export default {
   name: 'AlarmInfo',
   data: function () {
     return {
-
+      deviceIdImei: '',
+      version: '',
+      alarmInterva: '',
+      temperatureWarning: '',
+      humidityWarning: '',
+      lightWarning: '',
+      signalStrengthWarning: '',
+      lightPoleTiltWarning: '',
+      leakageAlarm: '',
+      reportCycleSetting: '',
+      apn: '',
+      plmn: '',
+      controllerStatusInstruction: ''
     }
   }
 }
