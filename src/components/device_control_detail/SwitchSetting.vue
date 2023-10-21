@@ -1,9 +1,9 @@
 <!-- 开关调节页 -->
 <template>
-  <div id="switchContainer">
+  <div id="panelContainer">
 
-    <div id="switchHeader">
-      <span class="t_switchSet" style="position: absolute;width: 100px;height: 37px;left: 46px;float: left;">开关调节</span>
+    <div id="panelHeader">
+      <span class="t_switchSet" id="panelTitle">开关调节</span>
     </div>
     <div id="lightName">
       <p class="t_lightName" style="float: left;">主灯1：</p>
@@ -15,16 +15,12 @@
     </div>
     <div id="lightBrightness">
       <span class="t_lightStatus" style="float: left;">亮度调节：</span>
-      <el-slider v-model="brightness" id="slider"></el-slider>
+      <el-slider v-model="brightness" :disabled="!lightOn" id="slider"></el-slider>
       <span id="brightPercent">亮度{{brightness}}%</span>
       <input type="text" v-model="brightness" class="input_bright" style="position: absolute;float: right;right: 53px;">
     </div>
-//提交按钮
-    <div style="position:absolute;
-    width:100%;
-    text-align: center;
-    bottom: 33px;"
-    >
+    <!-- 提交按钮 -->
+    <div id="panelSubmit">
       <button class="b_submit"><i style="float: left;">图</i><span>提交</span></button>
     </div>
   </div>
@@ -44,59 +40,74 @@ export default {
 
 <style scoped lang="less">
 @left : 45px;
-#switchContainer{
+
+#panelContainer{
   position: relative;
   width: 100%;
   height: 100%;
   max-height: 575px;
   background-color: hsla(140, 50%, 92%, 0.9);
-}
-#switchHeader{
-  position: relative;
-  height: 45px;
-  margin: 0 auto;
-  background-color: hsla(140, 50%, 80%, 0.9);
-}
-#panelTitle{
-  position: absolute;
-  width: 100px;
-  height: 37px;
-  left: @left;
-  float: left;
-}
-#lightName{
-  position: absolute;
-  width: calc(100% - @left);
-  left: @left;
-  top: 93px;
-}
-#lightStatus{
-  position: absolute;
-  width: calc(100% - @left);
-  height: 40px;
-  left: @left;
-  top: 132px;
-}
-#lightBrightness{
-  position: absolute;
-  width: calc(100% - @left);
-  left: @left;
-  top: 183px;
-}
-#slider{
-  position: absolute;
-  left: 112px;
-  width: calc((1000/1531)*100%);
-}
-#brightPercent{
-  position: absolute;
-  right: 251px;
-  width:88px;
-  height:28px;
-  font-size: 18.77px;
-  font-weight: 500;
-  line-height: 27.17px;
-  color: rgba(153, 153, 153, 1);
+
+  div{
+    width: 100%;
+  }
+
+  #panelHeader{
+    position: relative;
+    height: 45px;
+    margin: 0 auto;
+    background-color: hsla(140, 50%, 80%, 0.9);
+
+    #panelTitle{
+      position: absolute;
+      width: 100px;
+      height: 37px;
+      left: 46px;
+      float: left;
+    }
+  }
+  #lightName{
+    position: absolute;
+    width: calc(100% - @left);
+    left: @left;
+    top: 93px;
+  }
+  #lightStatus{
+    position: absolute;
+    width: calc(100% - @left);
+    height: 40px;
+    left: @left;
+    top: 132px;
+  }
+  #lightBrightness{
+    position: absolute;
+    width: calc(100% - @left);
+    left: @left;
+    top: 183px;
+
+    #slider{
+      position: absolute;
+      left: 112px;
+      width: calc((1000/1531)*100%);
+    }
+    #brightPercent{
+      position: absolute;
+      right: 251px;
+      width:88px;
+      height:28px;
+      font-size: 18.77px;
+      font-weight: 500;
+      line-height: 27.17px;
+      color: rgba(153, 153, 153, 1);
+    }
+  }
+
+  #panelSubmit{
+    position:absolute;
+    width:100%;
+    text-align: center;
+    bottom: 33px;
+  }
 }
 //--------------------------------------------
 .paramColumn{

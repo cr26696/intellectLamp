@@ -1,8 +1,8 @@
 <!-- 定时调节页 -->
 <template>
-  <div id="timerContainer">
+  <div id="panelContainer">
 
-    <div id="timerHeader">
+    <div id="panelHeader">
       <span class="t_paneltitle" id="panelTitle">定时调光</span>
     </div>
     <div id="timeraddTask">
@@ -40,7 +40,7 @@
       </el-table-column>
     </el-table>
     </div>
-    <div id="timerSubmit">
+    <div id="panelSubmit">
       <button class="b_submit"><i style="float: left;">图</i><span>提交</span></button>
     </div>
   </div>
@@ -80,7 +80,7 @@ export default {
 <style scoped lang="less">
 @left : 45px;
 
-#timerContainer{
+#panelContainer{
   position: relative;
   width: 100%;
   height: 100%;
@@ -91,7 +91,7 @@ export default {
     width: 100%;
   }
 
-  #timerHeader{
+  #panelHeader{
     position: relative;
     height: 37px;
     top: 9px;
@@ -131,7 +131,7 @@ export default {
     margin: 0 auto;
     background-color: hsla(140, 50%, 55%, 0.9);
   }
-  #timerSubmit{
+  #panelSubmit{
     position:absolute;
     width:100%;
     text-align: center;
