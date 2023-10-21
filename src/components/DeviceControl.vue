@@ -31,20 +31,18 @@
       </el-row>
       <div id="deviceInfoTable">
         <el-row>
-            <el-col :span="4"><div class="grid-content"><p class="textCategory">设备id</p><br><p class="textInfoContent">5433</p></div></el-col>
-            <el-col :span="4"><div class="grid-content"><p class="textCategory">版本号</p><br><p class="textInfoContent">0x2e</p></div></el-col>
-            <el-col :span="4"><div class="grid-content"><p class="textCategory">灯杆号</p><br><p class="textInfoContent">A163</p></div></el-col>
-            <el-col :span="4"><div class="grid-content"><p class="textCategory">控制器状态指令</p><br><p class="textInfoContent">·故障</p></div></el-col>
-            <el-col :span="4"><div class="grid-content"><p class="textCategory">报警间隔时间：</p><br><p class="textInfoContent">30分钟</p></div></el-col>
-            <el-col :span="4"><div class="grid-content"><p class="textCategory">温度传感器报警阙值：</p><br><p class="textInfoContent">101</p></div></el-col>
+            <el-col :span="4"><div class="grid-content"><p class="textCategory">设备id</p><br><p class="textInfoContent">861817066805433</p></div></el-col>
+            <el-col :span="4"><div class="grid-content"><p class="textCategory">灯杆号</p><br><p class="textInfoContent">-</p></div></el-col>
+            <el-col :span="4"><div class="grid-content"><p class="textCategory">经度</p><br><p class="textInfoContent">121.3825168185769</p></div></el-col>
+            <el-col :span="4"><div class="grid-content"><p class="textCategory">控制器状态</p><br><p class="textInfoContent">·离线</p></div></el-col>
+            <el-col :span="4"><div class="grid-content"><p class="textCategory">控制器模式</p><br><p class="textInfoContent">正常模式</p></div></el-col>
         </el-row>
         <el-row>
-            <el-col :span="4"><div class="grid-content"><p class="textCategory">湿度传感器报警阙值：</p><br><p class="textInfoContent">85%</p></div></el-col>
-            <el-col :span="4"><div class="grid-content"><p class="textCategory">光照传感器报警阙值：</p><br><p class="textInfoContent">0</p></div></el-col>
-            <el-col :span="4"><div class="grid-content"><p class="textCategory">信号强度报警阙值：</p><br><p class="textInfoContent">90%</p></div></el-col>
-            <el-col :span="4"><div class="grid-content"><p class="textCategory">灯杆倾斜角度报警阙值：</p><br><p class="textInfoContent">35°</p></div></el-col>
-            <el-col :span="4"><div class="grid-content"><p class="textCategory">漏电报警阙值：</p><br><p class="textInfoContent">38V</p></div></el-col>
-            <el-col :span="4"><div class="grid-content"><p class="textCategory">上报周期设定：</p><br><p class="textInfoContent">30分钟</p></div></el-col>
+            <el-col :span="4"><div class="grid-content"><p class="textCategory">版本号</p><br><p class="textInfoContent">0x2e</p></div></el-col>
+            <el-col :span="4"><div class="grid-content"><p class="textCategory">lora模块信道</p><br><p class="textInfoContent">0-110</p></div></el-col>
+            <el-col :span="4"><div class="grid-content"><p class="textCategory">纬度</p><br><p class="textInfoContent">31.16577853732639</p></div></el-col>
+            <el-col :span="4"><div class="grid-content"><p class="textCategory">灯具状态</p><br><p class="textInfoContent">·亮</p></div></el-col>
+            <el-col :span="4"><div class="grid-content"><p class="textCategory">lora地址</p><br><p class="textInfoContent">0-65535</p></div></el-col>
         </el-row>
       </div>
 
