@@ -1,6 +1,6 @@
 <!-- 开关调节页 -->
 <template>
-  <div class="container"></div>
+  <div class="container">开关调节页</div>
 </template>
 
 <script>
