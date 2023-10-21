@@ -15,9 +15,9 @@
     </div>
     <div id="lightBrightness">
       <span class="t_lightStatus" style="float: left;">亮度调节：</span>
-      <el-slidebar></el-slidebar>
-      <span>亮度100%</span>
-      <input type="text" class="input_bright" style="position: absolute;float: right;right: 53px;">
+      <el-slider v-model="brightness" id="slider"></el-slider>
+      <span id="brightPercent">亮度{{brightness}}%</span>
+      <input type="text" v-model="brightness" class="input_bright" style="position: absolute;float: right;right: 53px;">
     </div>
 //提交按钮
     <div style="position:absolute;
@@ -36,7 +36,7 @@ export default {
   data: function () {
     return {
       lightOn: true,
-      brightness: '100'
+      brightness: 80
     }
   }
 }
@@ -70,6 +70,7 @@ export default {
 
   position: absolute;
   width: calc(100% - @left);
+  height: 40px;
   left: @left;
   top: 132px;
 }
@@ -80,6 +81,21 @@ export default {
   width: calc(100% - @left);
   left: @left;
   top: 183px;
+}
+#slider{
+  position: absolute;
+  left: 112px;
+  width: calc((1000/1531)*100%);
+}
+#brightPercent{
+  position: absolute;
+  right: 251px;
+  width:88px;
+  height:28px;
+  font-size: 18.77px;
+  font-weight: 500;
+  line-height: 27.17px;
+  color: rgba(153, 153, 153, 1);
 }
 //--------------------------------------------
 .paramColumn{
