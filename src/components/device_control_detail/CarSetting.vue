@@ -1,6 +1,6 @@
 <!-- 车辆设置页 -->
 <template>
-<div class="container"></div>
+<div class="container">车辆设置页</div>
 </template>
 
 <script>

@@ -1,6 +1,6 @@
 <!-- 模式设置页 -->
 <template>
-    <div class="container"></div>
+    <div class="container">模式设置页</div>
   </template>
 
 <script>
