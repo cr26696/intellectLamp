@@ -1,6 +1,6 @@
 <template>
 <div id="main_container">
-
+  <div id="container">
     <div id="backHeader">
         <span class="verticalCenter" style="width: 37px;"></span>
         <router-link to="/mainview/deviceList" class="verticalCenter" id="backlink">《 返回上一页</router-link>
@@ -48,9 +48,9 @@
 
       <div id="line"></div>
 
-      <router-view style="position: absolute;top:500px"/>
+      <router-view style="top:21px"/>
     </div>
-
+  </div>
 </div>
 </template>
 
@@ -84,18 +84,25 @@ export default {
     height: 100%;
     background-color: hsla(140, 100%, 92%, 0.85);
 }
+#container{
+  position: absolute;
+  width: 1531px;
+  height: 936px;
+  min-height: 936px;
+  max-height: 1200px;
+  top: 14px;
+  left: 52px;
+  background-color: hsl(139, 27%, 75%);
+}
 #backHeader{//返回导航栏，居中
   position: relative;
-  left: 52px;
-  top: 14px;
-  width: 90%;
   height: 84px;
   line-height: 0;
-  background-color: hsla(140, 100%, 88%, 0.85);
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  border-radius:20px
+  border-radius:20px;
+  background-color: hsla(140, 100%, 88%, 0.85);
 }
 #backlink{//返回链接
     text-decoration: none;
@@ -106,38 +113,33 @@ export default {
     color: rgba(30, 170, 231, 1);
 }
 #infoPanel{//控制界面主体
-    position: absolute;
-    top: 110px;
-    left: 52px;
+    position: relative;
+    top: 12px;
     height: 85%;
-    width: 90%;
     min-height: 600px;
     background-color: hsla(140, 100%, 84%, 0.85);
-    display: flex;
 }
 #panelNav {
   border-radius: 4px;
   top: 19px;
   width: 100%;
   height: 60px;
-  margin: 0 auto;
+  margin: 0 !important;
   background-color: hsla(140, 100%, 71%, 0.85);
 }
 #deviceInfoTable{//设备信息2行
-    position: absolute;
+    position: relative;
     height: 135px;
-    width: 95%;
     min-width: 1000px;
     max-width: 1461px;
-    top: 117px;
-    margin: 0 auto;
+    top: 37px;
+    left: 105px;
 }
 #line{//分隔线
   position: relative;
-  top: 265px;
+  top: 14px;
   width: 93%;
   height:2px;
-  margin: 0 auto;
   border: 1px solid rgba(220, 220, 220, 1);
 }
 .verticalCenter{
