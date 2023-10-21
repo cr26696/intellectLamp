@@ -34,6 +34,10 @@ const routes = [
         component: DeviceControl,
         children: [
           {
+            path: '/',
+            redirect: 'paramsetting'
+          },
+          {
             path: 'paramsetting',
             component: ParamSetting
           },

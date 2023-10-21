@@ -1,8 +1,8 @@
 <template>
   <div id="container">
-    <div id="contentHeader">
-      <span id="textDeviceID" class="contentHeader" style="float:left;width:;">设备id:</span>
-      <input type="text" class="contentHeader" style="float:left;left:24px;
+    <div id="backHeader">
+      <span id="textDeviceID" class="backHeaderItem" style="float:left;width:;">设备id:</span>
+      <input type="text" class="backHeaderItem" style="float:left;left:24px;
         width: 240px;
         position:relative;
         border:0;
@@ -529,7 +529,7 @@ export default {
 #container{
   height: 100%;
 }
-#contentHeader{
+#backHeader{
   position: absolute;
   top: 41px;
   left: 53px;
@@ -549,7 +549,7 @@ export default {
   color: rgba(40, 40, 40, 1);
   text-align: left;
 }
-.contentHeader{
+.backHeaderItem{
   height: 50px;
 }
 
