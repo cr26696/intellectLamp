@@ -3,7 +3,7 @@
   <div id="paramContainer">
 
     <div id="paramHeader">
-      <span class="t_paramSet" style="width: 100px;height: 37px;left: 46px;float: left;">参数设置</span>
+      <span class="t_paramSet" style="position: absolute;width: 100px;height: 37px;left: 46px;float: left;">参数设置</span>
       <button class="b_paramHeader t_b2" style="right:222px;">获取终端GPS命令下发</button>
       <button class="b_paramHeader t_b2" style="right:56px">读取设备参数</button>
     </div>
@@ -33,7 +33,11 @@
         <div class="paramItem"><span class="t_paramCategory">纬度 </span><input type="text" class="input_param"></div>
       </div>
     </div>
-    <div style="position:relative;top: 50px;">
+    <div style="position:absolute;
+    width:100%;
+    text-align: center;
+    bottom: 33px;"
+    >
       <button class="b_submit"><i style="float: left;">图</i><span>提交</span></button>
     </div>
   </div>
