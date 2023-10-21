@@ -12,7 +12,7 @@
 
 <script>
 // @ is an alias to /src
-import SideBar from '@/components/SideBar.vue'
+import SideBar from '@/components/outerframe/SideBar.vue'
 export default {
   name: 'MainView',
   components: {
