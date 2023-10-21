@@ -1,10 +1,12 @@
 <template>
   <el-menu>
     <el-menu-item index="1">
-      <div>
-        <i class="el-icon-menu"></i>
-        <router-link to="/mainview/deviceList" style="text-decoration: none">设备列表</router-link>
-      </div>
+      <router-link to="/mainview/deviceList" style="text-decoration: none">
+        <div>
+          <i class="el-icon-menu"></i>
+          <span>设备列表</span>
+        </div>
+      </router-link>
     </el-menu-item>
     <el-menu-item index="2">
       <div>
