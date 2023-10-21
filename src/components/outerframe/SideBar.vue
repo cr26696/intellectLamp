@@ -9,13 +9,13 @@
     <el-menu-item index="2">
       <div>
         <i class="el-icon-view"></i>
-        <router-link to="/mainview/alarmParam" style="text-decoration: none">预警参数</router-link>
+        <router-link to="/mainview/alarmInfo" style="text-decoration: none">预警信息</router-link>
       </div>
     </el-menu-item>
     <el-menu-item index="3">
       <div>
         <i class="el-icon-view"></i>
-        <router-link to="/mainview/alarmInfo" style="text-decoration: none">预警信息</router-link>
+        <router-link to="/mainview/deviceControl" style="text-decoration: none">设备控制</router-link>
       </div>
     </el-menu-item>
   </el-menu>

@@ -1,10 +1,11 @@
+<!-- 开关调节页 -->
 <template>
   <div class="container"></div>
 </template>
 
 <script>
 export default {
-  name: 'ParamSetting'
+  name: 'SwitchSetting'
 }
 </script>
 

@@ -1,6 +1,7 @@
+<!-- 重启设备页 -->
 <template>
     <div class="container"></div>
-  </template>
+</template>
 
 <script>
 export default {

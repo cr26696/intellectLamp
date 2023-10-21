@@ -1,10 +1,11 @@
+<!-- 各设置页切换的导航 -->
 <template>
     <div class="container"></div>
-  </template>
+</template>
 
 <script>
 export default {
-  name: 'ModeSetting'
+  name: 'PageHeader'
 }
 </script>
 
