@@ -1,6 +1,6 @@
 <!-- 重启设备页 -->
 <template>
-    <div class="container"></div>
+    <div class="container">重启设备页</div>
 </template>
 
 <script>

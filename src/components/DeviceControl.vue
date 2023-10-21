@@ -1,82 +1,167 @@
 <template>
 <div id="main_container">
 
-  <div id="head_row" class="contentRow">
-      <span>设备id：</span>
-      <span><input></span>
-      <span>版本号：</span>
-      <span><input></span>
-      <span>控制器状态：</span>
-      <span><input></span>
-      <span></span>
-      <span><button>查询</button></span>
-      <span><button>重置</button></span>
-  </div>
-
-  <div id="table">
-    <el-table
-    :data="tableData"
-    style="width: 100%">
-    <el-table-column
-      prop="date"
-      label="日期"
-      width="180">
-    </el-table-column>
-    <el-table-column
-      prop="name"
-      label="姓名"
-      width="180">
-    </el-table-column>
-    <el-table-column
-      prop="address"
-      label="地址">
-    </el-table-column>
-    </el-table>
-  </div>
+    <div class="contentHeader">
+        <span class="verticalCenter" style="width: 37px;"></span>
+        <router-link to="/mainview/deviceList" class="verticalCenter" id="backlink">《 返回上一页</router-link>
+        <span class="verticalCenter" style="width: 54px;"></span>
+        <span class="verticalCenter textInfo" >预警信息</span>
+    </div>
+    <div id="info">
+      <el-row>
+        <el-col :span="4"><div class="grid-content">
+          <router-link to="/mainview/deviceControl/paramsetting"><button>参数设置</button></router-link>
+        </div></el-col>
+        <el-col :span="4"><div class="grid-content">
+          <router-link to="/mainview/deviceControl/switchsetting"><button>开关调节</button></router-link>
+        </div></el-col>
+        <el-col :span="4"><div class="grid-content">
+          <router-link to="/mainview/deviceControl/timersetting"><button>定时调节</button></router-link>
+        </div></el-col>
+        <el-col :span="4"><div class="grid-content">
+          <router-link to="/mainview/deviceControl/modesetting"><button>模式设置</button></router-link>
+        </div></el-col>
+        <el-col :span="4"><div class="grid-content">
+          <router-link to="/mainview/deviceControl/rebootsetting"><button>重启设备</button></router-link>
+        </div></el-col>
+        <el-col :span="4"><div class="grid-content">
+          <router-link to="/mainview/deviceControl/carsetting"><button>车辆设置</button></router-link>
+        </div></el-col>
+      </el-row>
+      <div id="line"></div>
+      <router-view/>
+    </div>
 
 </div>
 </template>
 
 <script>
 export default {
-  name: 'AlarmParam',
+  name: 'DeviceControl',
   data: function () {
     return {
-      tableData: [{
-        date: '2016-05-02',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1518 弄'
-      }, {
-        date: '2016-05-04',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1517 弄'
-      }, {
-        date: '2016-05-01',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1519 弄'
-      }, {
-        date: '2016-05-03',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1516 弄'
-      }]
+      deviceIdImei: '',
+      version: '',
+      alarmInterva: '',
+      temperatureWarning: '',
+      humidityWarning: '',
+      lightWarning: '',
+      signalStrengthWarning: '',
+      lightPoleTiltWarning: '',
+      leakageAlarm: '',
+      reportCycleSetting: '',
+      apn: '',
+      plmn: '',
+      controllerStatusInstruction: ''
     }
   }
 }
 </script>
 
 <style scoped lang="less">
-.contentRow {
-  position: absolute;
-  left: 53px;
-  top: 41px;
+#main_container{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+#backlink{//返回链接
+    text-decoration: none;
+    font-size: 18.75px;
+    font-weight: 500;
+    letter-spacing: 0px;
+    line-height: 27.15px;
+    color: rgba(30, 170, 231, 1);
+}
+#info{//报警信息主体
+    position: absolute;
+    top: 110px;
+    left: 52px;
+    height: 85%;
+    width: 90%;
+    min-height: 600px;
+    background-color: burlywood;
+}
+#infoHead{
+    min-height: 170px;
+}
+#line{//分隔线
+    border: 1px solid rgba(220, 220, 220, 1);
+    width: 93%;
+    margin: 0 auto;
+}
+#infoContent{
+    min-height: 840px;
+}
+#thrsTable{//阈值信息表
+    position: absolute;
+    height: 266px;
+    width: 95%;
+    min-width: 1000px;
+    max-width: 1461px;
+    top: 117px;
+    margin: 0 auto;
+}
+.contentHeader{//返回导航栏，居中
+    position: relative;
+    left: 52px;
+    top: 14px;
+    width: 90%;
+    height: 84px;
+    line-height: 0;
+    background-color: white;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border-radius:20px
+}
+.verticalCenter{
+    vertical-align:middle;
+}
+.el-row {
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+.el-col {
+  border-radius: 4px;
+}
+.grid-content {
+  min-height: 50px;
+}
+.row-bg {
+  padding: 10px 0;
+  background-color: #f9fafc;
+}
+.b_header{//设置页导航按钮
+  width: 200px;
   height: 50px;
-  line-height: 0;
+  border-radius: 20px;
+  border: 0;
+  background: rgba(239, 239, 239, 1);
 }
-#table {
-  position: absolute;
-  left: 53px;
-  top: 41px;
-  line-height: 0;
-  height: 400px;
-}
-</style>
+  .textInfo{//几种字体
+      font-size: 25px;
+      font-weight: 500;
+      letter-spacing: 0px;
+      line-height:36.2px;
+      color: rgba(66, 66, 66, 1);
+  }
+  .textCategory{
+      font-size: 16.67px;
+      font-weight: 500;
+      letter-spacing: 0px;
+      line-height: 24.13px;
+      color: rgba(102, 102, 102, 1);
+  }
+  .textInfoContent{
+      font-size: 18.75px;
+      font-weight: 700;
+      letter-spacing: 0px;
+      line-height: 27.15px;
+      color: rgba(40, 40, 40, 1);
+  }
+  p{
+      position: absolute;
+      height: auto;
+  }
+  </style>

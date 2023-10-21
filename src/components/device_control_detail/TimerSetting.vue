@@ -1,6 +1,6 @@
 <!-- 定时调节页 -->
 <template>
-    <div class="container"></div>
+    <div class="container">定时调节页</div>
 </template>
 
 <script>
