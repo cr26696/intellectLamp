@@ -23,7 +23,7 @@
         box-shadow: 0px 8px 18px  rgba(0, 0, 0, 0.1);">查询</button>
     </div>
     <el-table id="content"
-      :data="tableData"
+      :data="list"
       :header-cell-style="{height:'90px',padding:'0 !important'}"
       :row-style="{height: '90px',padding:'0 !important'}"
     >
@@ -52,62 +52,62 @@
         width="180"><template slot-scope="scope">{{scope.row.turnoffDelay}}分钟</template>
       </el-table-column>
       <el-table-column
-        prop="voltage"
+        prop="showVo.voltage"
         label="电压"
         width="180">
       </el-table-column>
       <el-table-column
-        prop="electricity"
-        label="电流压"
+        prop="showVo.electricity"
+        label="电流"
         width="180">
       </el-table-column>
       <el-table-column
-        prop="power"
+        prop="showVo.power"
         label="功率"
         width="180">
       </el-table-column>
       <el-table-column
-        prop="powers"
+        prop="showVo.powers"
         label="功率因子"
         width="180">
       </el-table-column>
       <el-table-column
-        prop="lampState"
+        prop="showVo.lampState"
         label="灯具状态"
         width="180">
       </el-table-column>
       <el-table-column
-        prop="sensorState"
+        prop="showVo.sensorState"
         label="传感器状态"
         width="180">
       </el-table-column>
       <el-table-column
-        prop="temperature"
+        prop="showVo.temperature"
         label="温度"
         width="180">
       </el-table-column>
       <el-table-column
-        prop="humidness"
+        prop="showVo.humidness"
         label="湿度"
         width="180">
       </el-table-column>
       <el-table-column
-        prop="bright"
+        prop="showVo.bright"
         label="亮度"
         width="180">
       </el-table-column>
       <el-table-column
-        prop="a"
+        prop="showVo.a"
         label="电流标准"
         width="180">
       </el-table-column>
       <el-table-column
-        prop="v"
+        prop="showVo.v"
         label="电压标准"
         width="180">
       </el-table-column>
       <el-table-column
-        prop="lightIntensity"
+        prop="showVo.lightIntensity"
         label="光照强度"
         width="180">
       </el-table-column>
@@ -117,97 +117,97 @@
         width="180">
       </el-table-column>
       <el-table-column
-        prop="adress"
+        prop="showVo.adress"
         label="面向地址"
         width="180">
       </el-table-column>
       <el-table-column
-        prop="controllerMode"
+        prop="showVo.controllerMode"
         label="控制器模式"
         width="180">
       </el-table-column>
       <el-table-column
-        prop="controllerDuratioon"
+        prop="showVo.controllerDuratioon"
         label="控制器在线时长"
         width="180">
       </el-table-column>
       <el-table-column
-        prop="signalNoiseRatio"
+        prop="showVo.signalNoiseRatio"
         label="信噪比"
         width="180">
       </el-table-column>
       <el-table-column
-        prop="signalCoverageStrength"
+        prop="showVo.signalCoverageStrength"
         label="信号覆盖强度"
         width="180">
       </el-table-column>
       <el-table-column
-        prop="baseStationNumbe"
+        prop="showVo.baseStationNumbe"
         label="基站号"
         width="180">
       </el-table-column>
       <el-table-column
-        prop="controllerOnlineStatus"
+        prop="showVo.controllerOnlineStatus"
         label="控制器在线状态"
         width="180">
       </el-table-column>
       <el-table-column
-        prop="msgSerialNumber"
+        prop="showVo.msgSerialNumber"
         label="信息序号"
         width="180">
       </el-table-column>
       <el-table-column
-        prop="moduleInformation"
+        prop="showVo.moduleInformation"
         label="模组信息"
         width="180">
       </el-table-column>
       <el-table-column
-        prop="mainControlChip"
+        prop="showVo.mainControlChip"
         label="主控芯片"
         width="180">
       </el-table-column>
       <el-table-column
-        prop="timeTwo"
+        prop="updateTime"
         label="更新时间"
         width="180">
       </el-table-column>
       <el-table-column
-        prop="carState"
+        prop="showVo.carState"
         label="当前有无车辆"
         width="180">
       </el-table-column>
       <el-table-column
-        prop="nineteenTime"
+        prop="showVo.nineteenTime"
         label="有无车辆通行上传时间"
         width="180">
       </el-table-column>
       <el-table-column
-        prop="channel"
+        prop="showVo.channel"
         label="信道"
         width="180">
       </el-table-column>
       <el-table-column
-        prop="group"
+        prop="showVo.groupNumnber"
         label="组号"
         width="180">
       </el-table-column>
       <el-table-column
-        prop="addressTwentyThree"
+        prop="showVo.addressTwentyThree"
         label="地址"
         width="180">
       </el-table-column>
       <el-table-column
-        prop="groupNumberOne"
+        prop="showVo.groupNumberOne"
         label="左组号"
         width="180">
       </el-table-column>
       <el-table-column
-        prop="groupNumberTwo"
+        prop="showVo.groupNumberTwo"
         label="右组号"
         width="180">
       </el-table-column>
       <el-table-column
-        prop="addressOne"
+        prop="showVo.addressOne"
         label="灯柱地址"
         width="180">
       </el-table-column>
@@ -232,6 +232,9 @@
 </template>
 
 <script>
+import axios from 'axios'
+// import { TabPane } from 'element-ui'
+
 export default {
   name: 'DeviceList',
   data: function () {
@@ -503,8 +506,21 @@ export default {
           groupNumberTwo: 'null',
           addressOne: 'null'
         }
-      ]
+      ],
+      list: []
     }
+  },
+  methods: {
+    async initDeviceList () {
+      const { data: res } = await axios.get('http://49.235.106.165:1020/device/getAllList', { params: { pageNum: 1, pageSize: 8 } })
+      console.log(res)
+      if (res.code === 2000) {
+        this.list = res.data.list.records
+      }
+    }
+  },
+  created () {
+    this.initDeviceList()
   }
 }
 </script>
