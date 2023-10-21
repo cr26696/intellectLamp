@@ -23,21 +23,21 @@ export default {
 
 <style>
  .el-header{
-    background-color: #B3C0D1;
+    background-color: hsla(183, 13%, 67%, 0.85);
     color: #333;
     text-align: center;
     height: 94px !important;
   }
 
   .el-aside {
-    background-color: #D3DCE6;
+    background-color: hsla(133, 30%, 58%, 0.85);
     color: #333;
     text-align: center;
     width: 233px !important;
   }
 
   .el-main {
-    background-color: #a4b3c4;
+    background-color: hsla(140, 100%, 98%, 0.85);
     color: #333;
     text-align: center;
     position: relative;
