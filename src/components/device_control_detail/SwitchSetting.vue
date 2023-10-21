@@ -10,8 +10,8 @@
     </div>
     <div id="lightStatus">
       <span class="t_lightStatus" style="float: left;">开关状态：</span>
-      <el-Switch v-model="lightOn" active-color="#rgba(30, 170, 231, 1);" id="switch"></el-Switch>
-      <span>开</span>
+      <el-Switch v-model=lightOn active-color="#rgba(30, 170, 231, 1);" id="switch" style="zoom: 1.8;"></el-Switch>
+      <span>{{ lightOn?"开":"关" }}</span>
     </div>
     <div id="lightBrightness">
       <span class="t_lightStatus" style="float: left;">亮度调节：</span>
@@ -163,16 +163,16 @@ export default {
 </style>
 <style lang="less">
 //开关样式--------------------------------------------
-.el-switch__core{
-    width:95px!important;
-    height:40px!important;
-    /*color:#409EFF;*/
-  }
-  /*设置圆*/
-.el-switch__core::after{
-    width:35px!important;
-    height:35px!important;
-    margin-top:-1px;
-    margin-bottom: 2px;
-  }
+// .el-switch__core{
+//     width:95px!important;
+//     height:40px!important;
+//     /*color:#409EFF;*/
+//   }
+//   /*设置圆*/
+// .el-switch__core::after{
+//     width:35px!important;
+//     height:35px!important;
+//     margin-top:-1px;
+//     margin-bottom: 2px;
+//   }
 </style>
