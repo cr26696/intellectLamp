@@ -89,6 +89,7 @@ export default {
     height: 85%;
     width: 90%;
     min-height: 600px;
+    border-radius: 20px;
     background-color: burlywood;
 }
 #infoHead{
