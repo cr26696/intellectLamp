@@ -43,6 +43,7 @@ export default {
 </script>
 
 <style scoped lang="less">
+@left : 45px;
 #switchContainer{
   position: relative;
   width: 100%;
@@ -56,18 +57,20 @@ export default {
   margin: 0 auto;
   background-color: hsla(140, 50%, 80%, 0.9);
 }
-
+#panelTitle{
+  position: absolute;
+  width: 100px;
+  height: 37px;
+  left: @left;
+  float: left;
+}
 #lightName{
-  @left : 45px;
-
   position: absolute;
   width: calc(100% - @left);
   left: @left;
   top: 93px;
 }
 #lightStatus{
-  @left : 45px;
-
   position: absolute;
   width: calc(100% - @left);
   height: 40px;
@@ -75,8 +78,6 @@ export default {
   top: 132px;
 }
 #lightBrightness{
-  @left : 45px;
-
   position: absolute;
   width: calc(100% - @left);
   left: @left;
