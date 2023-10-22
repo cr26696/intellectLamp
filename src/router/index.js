@@ -26,6 +26,10 @@ const routes = [
     component: MainView,
     children: [
       {
+        path: '/',
+        redirect: 'deviceList'
+      },
+      {
         path: 'deviceList',
         component: DeviceList
       },
