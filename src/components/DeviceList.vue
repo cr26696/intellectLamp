@@ -576,6 +576,7 @@ export default {
       console.log(resetL)
       if (resetL.code === 2000) {
         this.list = resetL.data.list.records
+        console.log(this.list)
       }
     }
   },

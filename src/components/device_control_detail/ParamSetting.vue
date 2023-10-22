@@ -4,7 +4,7 @@
 
     <div id="paramHeader">
       <span class="t_paramSet" style="position: absolute;width: 100px;height: 37px;left: 46px;float: left;">参数设置</span>
-      <button class="b_paramHeader t_b2" style="right:222px;">获取终端GPS命令下发</button>
+      <button class="b_paramHeader t_b2" style="right:222px;" @click="GPS">获取终端GPS命令下发</button>
       <button class="b_paramHeader t_b2" style="right:56px">读取设备参数</button>
     </div>
     <div id="paramContent">
@@ -38,12 +38,13 @@
     text-align: center;
     bottom: 33px;"
     >
-      <button class="b_submit"><i style="float: left;">图</i><span>提交</span></button>
+      <button class="b_submit" @click="setparameters"><i style="float: left;">图</i><span>提交</span></button>
     </div>
   </div>
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   name: 'ParamSetting',
   data () {
@@ -70,6 +71,52 @@ export default {
       ipFour: '32'
       // 纬度
     }
+  },
+  methods: {
+    async GPS  () {
+      const { data: res } = await axios.post('http://49.235.106.165:1020/equipmenContro/twentyTwo/send/read/GPS', { params: { deviceIdImei: '15449288861881059628769', modulationHeight: 5, maximumWarningAngle: 15 } })
+      console.log(res)
+      if (res.code === 2000) {
+        this.list = res.data.list
+      }
+    },
+    async setparameters () {
+      const { data: res } = await axios.post('http://49.235.106.165:1020/equipmenContro/ten/set/parameters',
+        {
+          params:
+        {
+          deviceIdImei: '15449288861881059628769',
+          version: '',
+          // 灭灯延时
+          temperatureWarning: '',
+          lightWarning: '',
+          lightPoleTiltWarning: '',
+          controllerStatusInstruction: '',
+          // 灯柱号
+          // 报警时间间隔
+          humidityWarning: '',
+          signalStrengthWarning: '',
+          modulationHeight: '',
+          // 经度
+          reportCycleSetting: '',
+          apn: '',
+          plmn: '',
+          leakageAlarm: '',
+          ipOne: '192',
+          ipTwo: '168',
+          ipThree: '0',
+          ipFour: '32'
+        }
+        })
+      console.log(res)
+    },
+    async queryparameters () {
+      const { data: res } = await axios.post('http://49.235.106.165:1020/equipmenContro/twelve/query/setting/parameter', { params: { deviceIdImei: '15449288861881059628769', commandWord: 179 } })
+      console.log(res)
+    }
+  },
+  created () {
+    this.queryparameters()
   }
 }
 </script>

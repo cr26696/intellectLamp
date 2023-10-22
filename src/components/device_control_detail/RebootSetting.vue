@@ -4,23 +4,27 @@
 
     <div id="panelHeader">
       <span class="t_paneltitle" id="panelTitle">设备重启</span>
-      <button id="reboot"><i>图</i><p class="t_rebootButton" >重启设备</p></button>
+      <button id="reboot"><i>图</i><p class="t_rebootButton" @click="reboot">重启设备</p></button>
     </div>
   </div>
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   name: 'RebootSetting',
   data () {
     return {
-      deviceIdImei: '',
+      deviceIdImei: '15449288861881059628769',
       version: '27',
       restartCommand: '0'
     }
   },
   methods: {
-
+    async reboot () {
+      const { data: result } = await axios.post('http://49.235.106.165:1020/equipmenContro/seven/restart', { params: { deviceIdImei: this.deviceIdImei, version: this.version, restartCommand: this.restartCommand } })
+      console.log(result)
+    }
   }
 }
 </script>

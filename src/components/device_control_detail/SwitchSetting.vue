@@ -15,24 +15,41 @@
     </div>
     <div id="lightBrightness">
       <span class="t_lightStatus" style="left:45px;">亮度调节：</span>
-      <span id="slider" style="left: 157px;"><el-slider v-model="brightness" :disabled="!lightOn"></el-slider></span>
-      <span id="brightPercent">亮度{{brightness}}%</span>
-      <input type="text" v-model="brightness" class="input_bright" style="position: absolute;float: right;right: 53px;">
+      <span id="slider" style="left: 157px;"><el-slider v-model="hostLight" :disabled="!lightOn"></el-slider></span>
+      <span id="brightPercent">亮度{{hostLight}}%</span>
+      <input type="text" v-model="hostLight" class="input_bright" style="position: absolute;float: right;right: 53px;">
     </div>
     <!-- 提交按钮 -->
     <div id="panelSubmit">
-      <button class="b_submit"><i style="float: left;">图</i><span>提交</span></button>
+      <button class="b_submit" @click="dimming"><i style="float: left;">图</i><span>提交</span></button>
     </div>
   </div>
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   name: 'SwitchSetting',
   data: function () {
     return {
       lightOn: true,
-      brightness: 80
+      hostLight: 80,
+      copyLight: 30
+
+    }
+  },
+  methods: {
+    async dimming () {
+      const { data: result } = await axios.post('http://49.235.106.165:1020/equipmenContro/four/dimming',
+        {
+          params:
+          {
+            deviceIdImei: '15449288861881059628769',
+            hostLight: this.hostLight,
+            copyLight: this.copyLight
+          }
+        })
+      console.log(result)
     }
   }
 }
