@@ -8,26 +8,19 @@
     </div>
     <div id="modeRow1">
       <span class="modeName" style="left: 46px;">正常模式：</span>
-      <span class="switchWarpper" style="left: 149px">
-          <el-Switch v-model="currentMode"
-          data-modeid=0
-          active-value=0
-          active-color="#rgba(30, 170, 231, 1);"
-          @change="switchStatusUpdate($event)"
-          style="zoom: 1.8;"></el-Switch>
-      </span>
+      <span class="switchWarpper" style="left: 149px"><el-Switch v-model="currentMode" data-modeid=0 :active-value=0 active-color="#rgba(30, 170, 231, 1);" @change="switchStatusUpdate($event)" style="zoom: 1.8;"></el-Switch></span>
       <span class="modeName" style="left: 321px;">调试模式：</span>
-      <span class="switchWarpper" style="left: 424px;"><el-Switch v-model="currentMode" data-modeid=1 active-value=1 active-color="#rgba(30, 170, 231, 1);" @change="switchStatusUpdate($event)" style="zoom: 1.8;"></el-Switch></span>
+      <span class="switchWarpper" style="left: 424px;"><el-Switch v-model="currentMode" data-modeid=1 :active-value=1 active-color="#rgba(30, 170, 231, 1);" @change="switchStatusUpdate($event)" style="zoom: 1.8;"></el-Switch></span>
       <span class="modeName" style="left: 600px;">远程升级模式：</span>
-      <span class="switchWarpper" style="left: 748px;"><el-Switch v-model="currentMode" data-modeid=2 active-value=2 active-color="#rgba(30, 170, 231, 1);" @change="switchStatusUpdate($event)" style="zoom: 1.8;"></el-Switch></span>
+      <span class="switchWarpper" style="left: 748px;"><el-Switch v-model="currentMode" data-modeid=2 :active-value=2 active-color="#rgba(30, 170, 231, 1);" @change="switchStatusUpdate($event)" style="zoom: 1.8;"></el-Switch></span>
       <span class="modeName" style="left: 921px;">亮灯状态模式：</span>
-      <span class="switchWarpper" style="left: 1064px;"><el-Switch v-model="currentMode" data-modeid=3 active-value=3 active-color="#rgba(30, 170, 231, 1);" @change="switchStatusUpdate($event)" style="zoom: 1.8;"></el-Switch></span>
+      <span class="switchWarpper" style="left: 1064px;"><el-Switch v-model="currentMode" data-modeid=3 :active-value=3 active-color="#rgba(30, 170, 231, 1);" @change="switchStatusUpdate($event)" style="zoom: 1.8;"></el-Switch></span>
       <span class="modeName" style="left: 1236px;">报警状态模式：</span>
-      <span class="switchWarpper" style="left: 1379px;"><el-Switch v-model="currentMode" data-modeid=4 active-value=4 active-color="#rgba(30, 170, 231, 1);" @change="switchStatusUpdate($event)" style="zoom: 1.8;"></el-Switch></span>
+      <span class="switchWarpper" style="left: 1379px;"><el-Switch v-model="currentMode" data-modeid=4 :active-value=4 active-color="#rgba(30, 170, 231, 1);" @change="switchStatusUpdate($event)" style="zoom: 1.8;"></el-Switch></span>
     </div>
     <div id="modeRow2">
       <span class="modeName" style="left: 46px;">特殊功能模式：</span>
-      <span class="switchWarpper" style="left: 187px"><el-Switch v-model="currentMode" data-modeid=5 active-value=5 active-color="#rgba(30, 170, 231, 1);" @change="switchStatusUpdate($event)" style="zoom: 1.8;"></el-Switch></span>
+      <span class="switchWarpper" style="left: 187px"><el-Switch v-model="currentMode" data-modeid=5 :active-value=5 active-color="#rgba(30, 170, 231, 1);" @change="switchStatusUpdate($event)" style="zoom: 1.8;"></el-Switch></span>
       <span class="modeName" style="left: 321px;">运输模式：</span>
       <span class="switchWarpper" style="left: 424px;"><el-Switch v-model="currentMode" data-modeid=6 active-value=6 active-color="#rgba(30, 170, 231, 1);" @change="switchStatusUpdate($event)" style="zoom: 1.8;"></el-Switch></span>
       <span class="modeName" style="left: 600px;">注销模式：</span>
@@ -47,8 +40,8 @@ export default {
     return {
       lightOn: true,
       brightness: 80,
-      currentMode: 1,
-      lastMode: '0',
+      currentMode: 0,
+      lastMode: 0,
       modeList: [
         '正常模式',
         '调试模式',
@@ -67,17 +60,21 @@ export default {
       console.log(result)
     },
     switchStatusUpdate (status) { // 开关状态改变
-      const target = event.target.parentNode
-      const modeId = target.dataset.modeid
+      // const target = event.target.parentNode
+      // const modeId = target.dataset.modeid
       if (this.currentMode === false) {
         this.currentMode = this.lastMode
       } else {
+        console.log('上次值' + this.lastMode + ', 当前值' + this.currentMode)
         this.lastMode = this.currentMode
-        console.log('已更改模式为：' + this.modeList[modeId])
       }
     }
   },
   created () {
+  },
+  mounted () {
+    console.log('mounted阶段currentMode：' + this.currentMode)
+    this.currentMode = 0
   },
   computed: {
     chooseMode () {
