@@ -6,16 +6,16 @@
       <span class="t_switchSet" id="panelTitle">开关调节</span>
     </div>
     <div id="lightName">
-      <p class="t_lightName" style="float: left;">主灯1：</p>
+      <p class="t_lightName" style="left:45px">主灯1：</p>
     </div>
     <div id="lightStatus">
-      <span class="t_lightStatus" style="float: left;">开关状态：</span>
-      <el-Switch v-model=lightOn active-color="#rgba(30, 170, 231, 1);" id="switch" style="zoom: 1.8;"></el-Switch>
-      <span>{{ lightOn?"开":"关" }}</span>
+      <span class="t_lightStatus text" style="left:45px;">开关状态：</span>
+      <span style="left: 168px;"><el-Switch v-model=lightOn active-color="#rgba(30, 170, 231, 1);" id="switch" style="zoom: 1.8;"></el-Switch></span>
+      <span class="t_lightStatus text" style="right: 88px;">{{ lightOn?"开":"关" }}</span>
     </div>
     <div id="lightBrightness">
-      <span class="t_lightStatus" style="float: left;">亮度调节：</span>
-      <el-slider v-model="brightness" :disabled="!lightOn" id="slider"></el-slider>
+      <span class="t_lightStatus" style="left:45px;">亮度调节：</span>
+      <span id="slider" style="left: 157px;"><el-slider v-model="brightness" :disabled="!lightOn"></el-slider></span>
       <span id="brightPercent">亮度{{brightness}}%</span>
       <input type="text" v-model="brightness" class="input_bright" style="position: absolute;float: right;right: 53px;">
     </div>
@@ -68,23 +68,32 @@ export default {
   }
   #lightName{
     position: absolute;
-    width: calc(100% - @left);
-    left: @left;
     top: 93px;
+    p{
+      position: absolute;
+    }
   }
   #lightStatus{
     position: absolute;
-    width: calc(100% - @left);
     height: 40px;
-    left: @left;
     top: 132px;
+
+    span{
+      position: absolute;
+      transform: translateY(-50%);
+      top: 50%;
+    }
+    .text{
+      position: absolute;
+      height: 28px;
+    }
   }
   #lightBrightness{
     position: absolute;
-    width: calc(100% - @left);
-    left: @left;
     top: 183px;
-
+    span{
+      position: absolute;
+    }
     #slider{
       position: absolute;
       left: 112px;
@@ -173,13 +182,6 @@ export default {
   font-weight: 500;
   line-height: 27.17px;
   color: rgba(102, 102, 102, 1);
-}
-.t_b2{//参数设置面板两按钮所用字体
-  font-size: 18.77px;
-  font-weight: 500;
-  line-height: 27.17px;
-  color: rgba(255, 255, 255, 1);
-  text-align: left;
 }
 .t_bSubmit{//参数设置面板提交按钮所用字体
   font-size: 20.83px;
