@@ -41,7 +41,7 @@
     </el-table>
     </div>
     <div id="panelSubmit">
-      <button class="b_submit"><i style="float: left;">图</i><span>提交</span></button>
+      <button class="b_submit" @click="dimmingBrightness"><i style="float: left;">图</i><span>提交</span></button>
     </div>
   </div>
 </template>
@@ -79,25 +79,22 @@ export default {
     async dimmingBrightness () {
       const { data: result } = await axios.post('http://49.235.106.165:1020/equipmenContro/there/dimmingBrightness',
         {
-          params:
-          {
-            deviceIdImei: '15449288861881059628769',
-            lightOnTimeS: '1',
-            lightOnTimeF: '2',
-            lightOn: '50',
-            lightOnTimeOneS: '1',
-            lightOnTimeOneF: '2',
-            lightOnOne: '50',
-            lightOnTimeTwoS: '1',
-            lightOnTimeTwoF: '2',
-            lightOnTwo: '50',
-            lightOnTimeThreeS: '1',
-            lightOnTimeThreeF: '2',
-            lightOnThree: '50',
-            lightOffTimeS: '8',
-            lightOffTimeF: '9',
-            lightOff: '10'
-          }
+          deviceIdImei: '15449288861881059628769',
+          lightOnTimeS: '1',
+          lightOnTimeF: '2',
+          lightOn: '50',
+          lightOnTimeOneS: '1',
+          lightOnTimeOneF: '2',
+          lightOnOne: '50',
+          lightOnTimeTwoS: '1',
+          lightOnTimeTwoF: '2',
+          lightOnTwo: '50',
+          lightOnTimeThreeS: '1',
+          lightOnTimeThreeF: '2',
+          lightOnThree: '50',
+          lightOffTimeS: '8',
+          lightOffTimeF: '9',
+          lightOff: '10'
         })
       console.log(result)
     }

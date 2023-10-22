@@ -111,7 +111,7 @@ export default {
       console.log(res)
     },
     async queryparameters () {
-      const { data: res } = await axios.post('http://49.235.106.165:1020/equipmenContro/twelve/query/setting/parameter', { params: { deviceIdImei: '15449288861881059628769', commandWord: 179 } })
+      const { data: res } = await axios.post('http://49.235.106.165:1020/equipmenContro/twelve/query/setting/parameter', { deviceIdImei: '15449288861881059628769', commandWord: '179' })
       console.log(res)
     }
   },

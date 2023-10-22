@@ -57,7 +57,7 @@ export default {
   },
   methods: {
     async settings () {
-      const { data: result } = await axios.post('http://49.235.106.165:1020/equipmenContro/six/activation/settings', { params: { mode: '0' } })
+      const { data: result } = await axios.post('http://49.235.106.165:1020/equipmenContro/six/activation/settings', { deviceIdImei: '15449288861881059628769', mode: '0' })
       console.log(result)
     }
   }

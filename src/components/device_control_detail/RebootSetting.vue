@@ -22,7 +22,7 @@ export default {
   },
   methods: {
     async reboot () {
-      const { data: result } = await axios.post('http://49.235.106.165:1020/equipmenContro/seven/restart', { params: { deviceIdImei: this.deviceIdImei, version: this.version, restartCommand: this.restartCommand } })
+      const { data: result } = await axios.post('http://49.235.106.165:1020/equipmenContro/seven/restart', { deviceIdImei: this.deviceIdImei, version: this.version, restartCommand: this.restartCommand })
       console.log(result)
     }
   }

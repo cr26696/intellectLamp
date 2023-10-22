@@ -565,6 +565,7 @@ export default {
     },
     async query () {
       const { data: query } = await axios.get('http://49.235.106.165:1020/equipmenContro/two/get/msg', { params: { deviceIdImei: this.deviceID } })
+      console.log(this.deviceID)
       console.log(query)
       if (query.code === 2000) {
         this.queryRes = query.data.list

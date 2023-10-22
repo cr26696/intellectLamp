@@ -21,7 +21,7 @@
     </div>
     <!-- 提交按钮 -->
     <div id="panelSubmit">
-      <button class="b_submit" @click="dimming"><i style="float: left;">图</i><span>提交</span></button>
+      <button class="b_submit" @click="Switchdimmingdimming"><i style="float: left;">图</i><span>提交</span></button>
     </div>
   </div>
 </template>
@@ -39,15 +39,12 @@ export default {
     }
   },
   methods: {
-    async dimming () {
+    async Switchdimming () {
       const { data: result } = await axios.post('http://49.235.106.165:1020/equipmenContro/four/dimming',
         {
-          params:
-          {
-            deviceIdImei: '15449288861881059628769',
-            hostLight: this.hostLight,
-            copyLight: this.copyLight
-          }
+          deviceIdImei: '15449288861881059628769',
+          hostLight: this.hostLight,
+          copyLight: this.copyLight
         })
       console.log(result)
     }
