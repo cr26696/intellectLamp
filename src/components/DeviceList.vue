@@ -260,16 +260,14 @@
         fixed="right"
         label="操作"
         width="320">
-        <template slot-scope="scope">
         <router-link :to="{path:'/mainview/alarmInfo',query:{}}">
-          <el-button @click="open(scope.row)" type="text" size="small">预警信息</el-button>
+          <el-button type="text" size="small">预警信息</el-button>
         </router-link>
         <el-button type="text" size="small">接受日志</el-button>
         <el-button type="text" size="small">指令设置</el-button>
         <el-button type="text" size="small">详情</el-button>
         <el-button type="text" size="small">修改</el-button>
         <el-button type="text" size="small">删除</el-button>
-        </template>
       </el-table-column>
     </el-table>
   </div>
