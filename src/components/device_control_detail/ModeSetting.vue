@@ -6,10 +6,25 @@
       <span class="t_paneltitle" id="panelTitle">设备模式</span>
       <span class="t_paneltitle" id="modeCurrent">正常模式</span>
     </div>
-    <div id="timeraddTask">
-      <span class="t_mode" style="float: left;">开关状态：</span>
-      <el-Switch v-model=lightOn active-color="#rgba(30, 170, 231, 1);" id="switch" style="zoom: 1.8;"></el-Switch>
-      <span>{{ lightOn?"开":"关" }}</span>
+    <div id="modeRow1">
+      <span class="modeName" style="left: 46px;">正常模式：</span>
+      <span class="switchWarpper" style="left: 149px"><el-Switch active-color="#rgba(30, 170, 231, 1);" style="zoom: 1.8;"></el-Switch></span>
+      <span class="modeName" style="left: 321px;">调试模式：</span>
+      <span class="switchWarpper" style="left: 424px;"><el-Switch active-color="#rgba(30, 170, 231, 1);" style="zoom: 1.8;"></el-Switch></span>
+      <span class="modeName" style="left: 600px;">远程升级模式：</span>
+      <span class="switchWarpper" style="left: 748px;"><el-Switch active-color="#rgba(30, 170, 231, 1);" style="zoom: 1.8;"></el-Switch></span>
+      <span class="modeName" style="left: 921px;">亮灯状态模式：</span>
+      <span class="switchWarpper" style="left: 1064px;"><el-Switch active-color="#rgba(30, 170, 231, 1);" style="zoom: 1.8;"></el-Switch></span>
+      <span class="modeName" style="left: 1236px;">报警状态模式：</span>
+      <span class="switchWarpper" style="left: 1379px;"><el-Switch active-color="#rgba(30, 170, 231, 1);" style="zoom: 1.8;"></el-Switch></span>
+    </div>
+    <div id="modeRow2">
+      <span class="modeName" style="left: 46px;">特殊功能模式：</span>
+      <span class="switchWarpper" style="left: 187px"><el-Switch active-color="#rgba(30, 170, 231, 1);" style="zoom: 1.8;"></el-Switch></span>
+      <span class="modeName" style="left: 321px;">运输模式：</span>
+      <span class="switchWarpper" style="left: 424px;"><el-Switch active-color="#rgba(30, 170, 231, 1);" style="zoom: 1.8;"></el-Switch></span>
+      <span class="modeName" style="left: 600px;">自主控制使能与不使能：</span>
+      <span class="switchWarpper" style="left: 816px;"><el-Switch active-color="#rgba(30, 170, 231, 1);" style="zoom: 1.8;"></el-Switch></span>
     </div>
     <div id="panelSubmit">
       <button class="b_submit"><i style="float: left;">图</i><span>提交</span></button>
@@ -43,8 +58,8 @@ export default {
 </script>
 
 <style scoped lang="less">
-@left : 45px;
-
+@left : 46px;
+//id嵌套样式-----------------------------------------
 #panelContainer{
   position: relative;
   width: 100%;
@@ -59,7 +74,7 @@ export default {
   #panelHeader{
     position: relative;
     height: 37px;
-    top: 9px;
+    top: 28px;
     margin: 0 auto;
     background-color: hsla(140, 50%, 80%, 0.9);
 
@@ -68,7 +83,6 @@ export default {
       width: 100px;
       height: 37px;
       left: @left;
-      float: left;
     }
     #modeCurrent{
       position: absolute;
@@ -79,31 +93,42 @@ export default {
       color: rgba(30, 170, 231, 1);
     }
   }
-  #timeraddTask{
+  #modeRow1{
     position: absolute;
-    height: 45px;
-    top: 98px;
-    margin: 0 auto;
+    height: 40px;
+    top: 116px;
     background-color: hsla(140, 50%, 65%, 0.9);
 
-    #addTask{
+    .modeName{
       position: absolute;
-      left: @left;
-      border: 0;
+      height: 28px;
+      transform: translateY(-50%);
+      top: 50%;
     }
-    #readTask{
+    .switchWarpper{
       position: absolute;
-      right: 54px;
-      border: 0;
+      width: 95px;
+      height: 40px;
     }
   }
-  #timerTable{
+  #modeRow2{
     position: absolute;
-    height: 45px;
-    top: 184px;
-    margin: 0 auto;
+    height: 40px;
+    top: 180px;
     background-color: hsla(140, 50%, 55%, 0.9);
+    .modeName{
+      position: absolute;
+      height: 28px;
+      transform: translateY(-50%);
+      top: 50%;
+    }
+    .switchWarpper{
+      position: absolute;
+      width: 95px;
+      height: 40px;
+    }
   }
+
   #panelSubmit{
     position:absolute;
     width:100%;
