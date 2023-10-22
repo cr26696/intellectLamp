@@ -6,3 +6,12 @@ html,body{
   padding:0;
   box-sizing: border-box;
 }
+.el-table__fixed{
+  pointer-events: none !important;
+}
+.el-table__fixed-right{
+  pointer-events: none !important;
+}
+.el-table__fixed-body-wrapper{
+  pointer-events: all;
+}
