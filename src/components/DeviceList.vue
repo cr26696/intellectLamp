@@ -261,8 +261,8 @@
         label="操作"
         width="320">
         <template slot-scope="scope">
-        <router-link to="/mainview/alarmInfo">
-        <el-button @click="open(scope.row)" type="text" size="small">预警信息</el-button>
+        <router-link :to="{path:'/mainview/alarmInfo',query:{}}">
+          <el-button @click="open(scope.row)" type="text" size="small">预警信息</el-button>
         </router-link>
         <el-button type="text" size="small">接受日志</el-button>
         <el-button type="text" size="small">指令设置</el-button>
@@ -564,12 +564,12 @@ export default {
       }
     },
     async query () {
-      const { data: query } = await axios.get('http://49.235.106.165:1020/equipmenContro/two/get/msg', { params: { deviceIdImei: this.deviceID } })
+      const { data: query } = await axios.get('http://49.235.106.165:1020/device/getAllList', { params: { pageNum: 1, pageSize: 8, deviceIdImei: this.deviceID } })
       console.log(this.deviceID)
       console.log(query)
       if (query.code === 2000) {
-        this.queryRes = query.data.list
-        console.log(this.queryRes)
+        this.list = query.data.list.records
+        console.log(this.list)
       }
     },
     async resetList () {

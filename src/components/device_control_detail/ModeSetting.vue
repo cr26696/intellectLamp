@@ -4,7 +4,7 @@
 
     <div id="panelHeader">
       <span class="t_paneltitle" id="panelTitle">设备模式</span>
-      <span class="t_paneltitle" id="modeCurrent">正常模式</span>
+      <span class="t_paneltitle" id="modeCurrent" >{{ chooseMode }}</span>
     </div>
     <div id="modeRow1">
       <span class="modeName" style="left: 46px;">正常模式：</span>
@@ -30,7 +30,7 @@
       <span class="switchWarpper" style="left: 187px"><el-Switch v-model="currentMode" data-modeid=5 active-value=5 active-color="#rgba(30, 170, 231, 1);" @change="switchStatusUpdate($event)" style="zoom: 1.8;"></el-Switch></span>
       <span class="modeName" style="left: 321px;">运输模式：</span>
       <span class="switchWarpper" style="left: 424px;"><el-Switch v-model="currentMode" data-modeid=6 active-value=6 active-color="#rgba(30, 170, 231, 1);" @change="switchStatusUpdate($event)" style="zoom: 1.8;"></el-Switch></span>
-      <span class="modeName" style="left: 600px;">自主控制使能与不使能：</span>
+      <span class="modeName" style="left: 600px;">注销模式：</span>
       <span class="switchWarpper" style="left: 816px;"><el-Switch v-model="currentMode" data-modeid=7 active-value=7 active-color="#rgba(30, 170, 231, 1);" @change="switchStatusUpdate($event)" style="zoom: 1.8;"></el-Switch></span>
     </div>
     <div id="panelSubmit">
@@ -47,8 +47,8 @@ export default {
     return {
       lightOn: true,
       brightness: 80,
-      currentMode: 0,
-      lastMode: 0,
+      currentMode: 1,
+      lastMode: '0',
       modeList: [
         '正常模式',
         '调试模式',
@@ -57,7 +57,7 @@ export default {
         '报警状态模式',
         '特殊功能模式',
         '运输模式',
-        '自主控制使能与不使能'
+        '注销模式'
       ]
     }
   },
@@ -78,6 +78,11 @@ export default {
     }
   },
   created () {
+  },
+  computed: {
+    chooseMode () {
+      return this.modeList[this.currentMode]
+    }
   }
 }
 </script>

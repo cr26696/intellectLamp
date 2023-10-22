@@ -83,30 +83,23 @@ export default {
     async setparameters () {
       const { data: res } = await axios.post('http://49.235.106.165:1020/equipmenContro/ten/set/parameters',
         {
-          params:
-        {
           deviceIdImei: '15449288861881059628769',
-          version: '',
-          // 灭灯延时
-          temperatureWarning: '',
-          lightWarning: '',
-          lightPoleTiltWarning: '',
-          controllerStatusInstruction: '',
-          // 灯柱号
-          // 报警时间间隔
-          humidityWarning: '',
-          signalStrengthWarning: '',
-          modulationHeight: '',
-          // 经度
-          reportCycleSetting: '',
-          apn: '',
-          plmn: '',
-          leakageAlarm: '',
+          version: '17',
+          temperatureWarning: '30',
+          lightWarning: '33',
+          lightPoleTiltWarning: '35',
+          controllerStatusInstruction: '1',
+          humidityWarning: '32',
+          signalStrengthWarning: '17',
+          // modulationHeight: '',
+          reportCycleSetting: '30',
+          apn: '21',
+          plmn: '132',
+          leakageAlarm: '40',
           ipOne: '192',
           ipTwo: '168',
           ipThree: '0',
           ipFour: '32'
-        }
         })
       console.log(res)
     },

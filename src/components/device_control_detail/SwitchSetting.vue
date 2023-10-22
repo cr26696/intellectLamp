@@ -21,7 +21,7 @@
     </div>
     <!-- 提交按钮 -->
     <div id="panelSubmit">
-      <button class="b_submit" @click="Switchdimmingdimming"><i style="float: left;">图</i><span>提交</span></button>
+      <button class="b_submit" @click="Switchdimming"><i style="float: left;">图</i><span>提交</span></button>
     </div>
   </div>
 </template>
