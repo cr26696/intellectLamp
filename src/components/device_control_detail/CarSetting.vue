@@ -7,7 +7,7 @@
     </div>
     <div id="carMonitor">
       <span id="span1" class="pos_leftCenter">车辆监测：</span>
-      <span id="span2"><el-Switch style="zoom:1.8;" active-color="#rgba(30, 170, 231, 1);"></el-Switch></span>
+      <span id="span2"><el-Switch style="zoom:1.8;" active-color="#rgba(30, 170, 231, 1);" v-model="monitorSwitch"></el-Switch></span>
     </div>
     <div id="carMaxCountTime">
       <span>最大计算无车计时间（S）</span>
@@ -21,7 +21,12 @@
 
 <script>
 export default {
-  name: 'CarSetting'
+  name: 'CarSetting',
+  data () {
+    return {
+      monitorSwitch: 'true'
+    }
+  }
 }
 </script>
 
