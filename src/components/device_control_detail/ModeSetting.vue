@@ -8,23 +8,30 @@
     </div>
     <div id="modeRow1">
       <span class="modeName" style="left: 46px;">正常模式：</span>
-      <span class="switchWarpper" style="left: 149px"><el-Switch active-color="#rgba(30, 170, 231, 1);" style="zoom: 1.8;"></el-Switch></span>
+      <span class="switchWarpper" style="left: 149px">
+          <el-Switch v-model="currentMode"
+          data-modeid=0
+          active-value=0
+          active-color="#rgba(30, 170, 231, 1);"
+          @change="switchStatusUpdate($event)"
+          style="zoom: 1.8;"></el-Switch>
+      </span>
       <span class="modeName" style="left: 321px;">调试模式：</span>
-      <span class="switchWarpper" style="left: 424px;"><el-Switch active-color="#rgba(30, 170, 231, 1);" style="zoom: 1.8;"></el-Switch></span>
+      <span class="switchWarpper" style="left: 424px;"><el-Switch v-model="currentMode" data-modeid=1 active-value=1 active-color="#rgba(30, 170, 231, 1);" @change="switchStatusUpdate($event)" style="zoom: 1.8;"></el-Switch></span>
       <span class="modeName" style="left: 600px;">远程升级模式：</span>
-      <span class="switchWarpper" style="left: 748px;"><el-Switch active-color="#rgba(30, 170, 231, 1);" style="zoom: 1.8;"></el-Switch></span>
+      <span class="switchWarpper" style="left: 748px;"><el-Switch v-model="currentMode" data-modeid=2 active-value=2 active-color="#rgba(30, 170, 231, 1);" @change="switchStatusUpdate($event)" style="zoom: 1.8;"></el-Switch></span>
       <span class="modeName" style="left: 921px;">亮灯状态模式：</span>
-      <span class="switchWarpper" style="left: 1064px;"><el-Switch active-color="#rgba(30, 170, 231, 1);" style="zoom: 1.8;"></el-Switch></span>
+      <span class="switchWarpper" style="left: 1064px;"><el-Switch v-model="currentMode" data-modeid=3 active-value=3 active-color="#rgba(30, 170, 231, 1);" @change="switchStatusUpdate($event)" style="zoom: 1.8;"></el-Switch></span>
       <span class="modeName" style="left: 1236px;">报警状态模式：</span>
-      <span class="switchWarpper" style="left: 1379px;"><el-Switch active-color="#rgba(30, 170, 231, 1);" style="zoom: 1.8;"></el-Switch></span>
+      <span class="switchWarpper" style="left: 1379px;"><el-Switch v-model="currentMode" data-modeid=4 active-value=4 active-color="#rgba(30, 170, 231, 1);" @change="switchStatusUpdate($event)" style="zoom: 1.8;"></el-Switch></span>
     </div>
     <div id="modeRow2">
       <span class="modeName" style="left: 46px;">特殊功能模式：</span>
-      <span class="switchWarpper" style="left: 187px"><el-Switch active-color="#rgba(30, 170, 231, 1);" style="zoom: 1.8;"></el-Switch></span>
+      <span class="switchWarpper" style="left: 187px"><el-Switch v-model="currentMode" data-modeid=5 active-value=5 active-color="#rgba(30, 170, 231, 1);" @change="switchStatusUpdate($event)" style="zoom: 1.8;"></el-Switch></span>
       <span class="modeName" style="left: 321px;">运输模式：</span>
-      <span class="switchWarpper" style="left: 424px;"><el-Switch active-color="#rgba(30, 170, 231, 1);" style="zoom: 1.8;"></el-Switch></span>
+      <span class="switchWarpper" style="left: 424px;"><el-Switch v-model="currentMode" data-modeid=6 active-value=6 active-color="#rgba(30, 170, 231, 1);" @change="switchStatusUpdate($event)" style="zoom: 1.8;"></el-Switch></span>
       <span class="modeName" style="left: 600px;">自主控制使能与不使能：</span>
-      <span class="switchWarpper" style="left: 816px;"><el-Switch active-color="#rgba(30, 170, 231, 1);" style="zoom: 1.8;"></el-Switch></span>
+      <span class="switchWarpper" style="left: 816px;"><el-Switch v-model="currentMode" data-modeid=7 active-value=7 active-color="#rgba(30, 170, 231, 1);" @change="switchStatusUpdate($event)" style="zoom: 1.8;"></el-Switch></span>
     </div>
     <div id="panelSubmit">
       <button class="b_submit"><i style="float: left;">图</i><span>提交</span></button>
@@ -40,26 +47,37 @@ export default {
     return {
       lightOn: true,
       brightness: 80,
-      tableData: [{
-        data1: '0x2e',
-        data2: '关灯指令',
-        data3: '14:38:23',
-        data4: '100',
-        data5: '已完成'
-      }, {
-        data1: '0x2e',
-        data2: '开灯指令',
-        data3: '14:38:23',
-        data4: '100',
-        data5: '未完成'
-      }]
+      currentMode: 0,
+      lastMode: 0,
+      modeList: [
+        '正常模式',
+        '调试模式',
+        '远程升级模式',
+        '亮灯状态模式',
+        '报警状态模式',
+        '特殊功能模式',
+        '运输模式',
+        '自主控制使能与不使能'
+      ]
     }
   },
   methods: {
     async settings () {
       const { data: result } = await axios.post('http://49.235.106.165:1020/equipmenContro/six/activation/settings', { params: { mode: '0' } })
       console.log(result)
+    },
+    switchStatusUpdate (status) { // 开关状态改变
+      const target = event.target.parentNode
+      const modeId = target.dataset.modeid
+      if (this.currentMode === false) {
+        this.currentMode = this.lastMode
+      } else {
+        this.lastMode = this.currentMode
+        console.log('已更改模式为：' + this.modeList[modeId])
+      }
     }
+  },
+  created () {
   }
 }
 </script>
