@@ -10,24 +10,11 @@
 
     <div id="infoPanel">
       <el-row :gutter="20" id="panelNav">
-        <el-col :span="4"><div class="grid-content">
-          <router-link to="/mainview/deviceControl/paramsetting"><button class="b_header">参数设置</button></router-link>
-        </div></el-col>
-        <el-col :span="4"><div class="grid-content">
-          <router-link to="/mainview/deviceControl/switchsetting"><button class="b_header">开关调节</button></router-link>
-        </div></el-col>
-        <el-col :span="4"><div class="grid-content">
-          <router-link to="/mainview/deviceControl/timersetting"><button class="b_header">定时调节</button></router-link>
-        </div></el-col>
-        <el-col :span="4"><div class="grid-content">
-          <router-link to="/mainview/deviceControl/modesetting"><button class="b_header">模式设置</button></router-link>
-        </div></el-col>
-        <el-col :span="4"><div class="grid-content">
-          <router-link to="/mainview/deviceControl/rebootsetting"><button class="b_header">重启设备</button></router-link>
-        </div></el-col>
-        <el-col :span="4"><div class="grid-content">
-          <router-link to="/mainview/deviceControl/carsetting"><button class="b_header">车辆设置</button></router-link>
-        </div></el-col>
+        <el-col :span="4" v-for="item in panelList" :key="item.id">
+          <div class="grid-content">
+            <button class="b_header" @click="currentPanel = item[1]">{{item[0]}}</button>
+          </div>
+        </el-col>
       </el-row>
       <div id="deviceInfoTable">
         <el-row>
@@ -45,34 +32,55 @@
             <el-col :span="4"><div class="grid-content"><p class="textCategory">lora地址</p><br><p class="textInfoContent">0-65535</p></div></el-col>
         </el-row>
       </div>
-
       <div id="line"></div>
-
-      <router-view style="top:21px"/>
+      <keep-alive>
+        <component :is="currentPanel" style="top:21px"></component>
+      </keep-alive>
     </div>
   </div>
 </div>
 </template>
 
 <script>
+import ParamSetting from '@/components/device_control_detail/ParamSetting.vue'
+import SwitchSetting from '@/components/device_control_detail/SwitchSetting.vue'
+import TimerSetting from '@/components/device_control_detail/TimerSetting.vue'
+import ModeSetting from '@/components/device_control_detail/ModeSetting.vue'
+import RebootSetting from '@/components/device_control_detail/RebootSetting.vue'
+import CarSetting from '@/components/device_control_detail/CarSetting.vue'
+
 export default {
   name: 'DeviceControl',
   data: function () {
     return {
-      deviceIdImei: '',
-      version: '',
-      alarmInterva: '',
-      temperatureWarning: '',
-      humidityWarning: '',
-      lightWarning: '',
-      signalStrengthWarning: '',
-      lightPoleTiltWarning: '',
-      leakageAlarm: '',
-      reportCycleSetting: '',
-      apn: '',
-      plmn: '',
-      controllerStatusInstruction: ''
+      deviceInfo: {
+        deviceIdImei: '',
+        version: '',
+        alarmInterva: '',
+        temperatureWarning: '',
+        humidityWarning: '',
+        lightWarning: '',
+        signalStrengthWarning: '',
+        lightPoleTiltWarning: '',
+        leakageAlarm: '',
+        reportCycleSetting: '',
+        apn: '',
+        plmn: '',
+        controllerStatusInstruction: ''
+      },
+      panelList: [
+        ['参数设置', ParamSetting],
+        ['开关调节', SwitchSetting],
+        ['定时调节', TimerSetting],
+        ['模式设置', ModeSetting],
+        ['重启设备', RebootSetting],
+        ['车辆设置', CarSetting]
+      ],
+      currentPanel: ParamSetting
     }
+  },
+  methods: {
+
   }
 }
 </script>
