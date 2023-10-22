@@ -16,7 +16,8 @@
         opacity: 1;
         border-radius: 24.5px;
         background: rgba(255, 255, 255, 1);
-        box-shadow: 0px 8px 18px  rgba(0, 0, 0, 0.1)">重置</button>
+        box-shadow: 0px 8px 18px  rgba(0, 0, 0, 0.1)"
+        @click="resetList">重置</button>
       <button style="float: right;
         width: 120px;
         height: 50px;
@@ -24,7 +25,8 @@
         border-radius: 24.5px;
         background: rgba(30, 170, 231, 1);
         box-shadow: 0px 8px 18px  rgba(0, 0, 0, 0.1);
-        margin-right: 20px;">查询</button>
+        margin-right: 20px;"
+        @click="query()">查询</button>
     </div>
     <el-table id="content"
       :data="list"
@@ -549,7 +551,8 @@ export default {
         }
       ],
       list: [],
-      deviceID: ''
+      deviceID: '',
+      queryRes: ''
     }
   },
   methods: {
@@ -558,6 +561,21 @@ export default {
       console.log(res)
       if (res.code === 2000) {
         this.list = res.data.list.records
+      }
+    },
+    async query () {
+      const { data: query } = await axios.get('http://49.235.106.165:1020/equipmenContro/two/get/msg', { params: { deviceIdImei: this.deviceID } })
+      console.log(query)
+      if (query.code === 2000) {
+        this.queryRes = query.data.list
+        console.log(this.queryRes)
+      }
+    },
+    async resetList () {
+      const { data: resetL } = await axios.get('http://49.235.106.165:1020/device/getAllList', { params: { pageNum: 1, pageSize: 8 } })
+      console.log(resetL)
+      if (resetL.code === 2000) {
+        this.list = resetL.data.list.records
       }
     }
   },

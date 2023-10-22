@@ -32,7 +32,7 @@
                     <el-col :span="4"><div class="grid-content"><p class="textCategory">上报周期设定：</p><br><p class="textInfoContent">{{ reportCycleSetting }}</p></div></el-col>
                 </el-row>
                 <el-row>
-                    <el-col :span="4"><div class="grid-content"><p class="textCategory">南向地址修改：</p><br><p class="textInfoContent">{{  }}</p></div></el-col>
+                    <el-col :span="4"><div class="grid-content"><p class="textCategory">南向地址修改：</p><br><p class="textInfoContent">{{ ipOne+'.'+ipTwo+'.'+ipThree+'.'+ipFour }}</p></div></el-col>
                     <el-col :span="4"><div class="grid-content"><p class="textCategory">修改APN：</p><br><p class="textInfoContent">{{ apn }}</p></div></el-col>
                     <el-col :span="4"><div class="grid-content"><p class="textCategory">修改PLMN：</p><br><p class="textInfoContent">{{ plmn }}</p></div></el-col>
                     <el-col :span="4"><div class="grid-content"><p class="textCategory">更新时间：</p><br><p class="textInfoContent">{{  }}</p></div></el-col>
@@ -62,7 +62,11 @@ export default {
       reportCycleSetting: '',
       apn: '',
       plmn: '',
-      controllerStatusInstruction: ''
+      controllerStatusInstruction: '',
+      ipOne: '192',
+      ipTwo: '168',
+      ipThree: '0',
+      ipFour: '32'
     }
   }
 }

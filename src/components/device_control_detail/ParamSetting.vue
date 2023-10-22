@@ -9,26 +9,26 @@
     </div>
     <div id="paramContent">
       <div class="paramColumn" style="left: 46px;">
-        <div class="paramItem"><span class="t_paramCategory">版本号</span><input type="text" class="input_param"></div>
-        <div class="paramItem"><span class="t_paramCategory">灭灯延时</span><input type="text" class="input_param"></div>
-        <div class="paramItem"><span class="t_paramCategory">温度传感器报警阀值 </span><input type="text" class="input_param"></div>
-        <div class="paramItem"><span class="t_paramCategory">光照传感器报警阈值</span><input type="text" class="input_param"></div>
-        <div class="paramItem"><span class="t_paramCategory">灯杆倾斜角度报警阀值</span><input type="text" class="input_param"></div>
-        <div class="paramItem"><span class="t_paramCategory">控制器状态指令</span><input type="text" class="input_param"></div>
+        <div class="paramItem"><span class="t_paramCategory">版本号</span><input type="text" class="input_param" v-model="version"></div>
+        <div class="paramItem"><span class="t_paramCategory">灭灯延时</span><input type="text" class="input_param" ></div>
+        <div class="paramItem"><span class="t_paramCategory">温度传感器报警阀值 </span><input type="text" class="input_param" v-model="temperatureWarning"></div>
+        <div class="paramItem"><span class="t_paramCategory">光照传感器报警阈值</span><input type="text" class="input_param" v-model="lightWarning"></div>
+        <div class="paramItem"><span class="t_paramCategory">灯杆倾斜角度报警阀值</span><input type="text" class="input_param" v-model="lightPoleTiltWarning"></div>
+        <div class="paramItem"><span class="t_paramCategory">控制器状态指令</span><input type="text" class="input_param" v-model="controllerStatusInstruction"></div>
       </div>
       <div class="paramColumn" style="left: 104px;">
-        <div class="paramItem"><span class="t_paramCategory">灯柱号</span><input type="text" class="input_param"></div>
-        <div class="paramItem"><span class="t_paramCategory">报警时间间隔</span><input type="text" class="input_param"></div>
-        <div class="paramItem"><span class="t_paramCategory">湿度传感器报警阈值 </span><input type="text" class="input_param"></div>
-        <div class="paramItem"><span class="t_paramCategory">信号强度报警阀值</span><input type="text" class="input_param"></div>
-        <div class="paramItem"><span class="t_paramCategory">灯高度</span><input type="text" class="input_param"></div>
+        <div class="paramItem"><span class="t_paramCategory">灯柱号</span><input type="text" class="input_param" ></div>
+        <div class="paramItem"><span class="t_paramCategory">报警时间间隔</span><input type="text" class="input_param" ></div>
+        <div class="paramItem"><span class="t_paramCategory">湿度传感器报警阈值 </span><input type="text" class="input_param" v-model="humidityWarning"></div>
+        <div class="paramItem"><span class="t_paramCategory">信号强度报警阀值</span><input type="text" class="input_param" v-model="signalStrengthWarning"></div>
+        <div class="paramItem"><span class="t_paramCategory">灯高度</span><input type="text" class="input_param" v-model="modulationHeight"></div>
         <div class="paramItem"><span class="t_paramCategory">经度</span><input type="text" class="input_param"></div>
       </div>
       <div class="paramColumn" style="left: 162px;">
-        <div class="paramItem"><span class="t_paramCategory">上报周期设定 </span><input type="text" class="input_param"></div>
-        <div class="paramItem"><span class="t_paramCategory">修改APN</span><input type="text" class="input_param"></div>
-        <div class="paramItem"><span class="t_paramCategory">修改PLMN </span><input type="text" class="input_param"></div>
-        <div class="paramItem"><span class="t_paramCategory">漏电报警阀值</span><input type="text" class="input_param"></div>
+        <div class="paramItem"><span class="t_paramCategory">上报周期设定 </span><input type="text" class="input_param" v-model="reportCycleSetting"></div>
+        <div class="paramItem"><span class="t_paramCategory">修改APN</span><input type="text" class="input_param" v-model="apn"></div>
+        <div class="paramItem"><span class="t_paramCategory">修改PLMN </span><input type="text" class="input_param" v-model="plmn"></div>
+        <div class="paramItem"><span class="t_paramCategory">漏电报警阀值</span><input type="text" class="input_param" v-model="leakageAlarm"></div>
         <div class="paramItem"><span class="t_paramCategory">南向地址修改</span><input type="text" class="input_param"></div>
         <div class="paramItem"><span class="t_paramCategory">纬度 </span><input type="text" class="input_param"></div>
       </div>
@@ -45,7 +45,32 @@
 
 <script>
 export default {
-  name: 'ParamSetting'
+  name: 'ParamSetting',
+  data () {
+    return {
+      version: '',
+      // 灭灯延时
+      temperatureWarning: '',
+      lightWarning: '',
+      lightPoleTiltWarning: '',
+      controllerStatusInstruction: '',
+      // 灯柱号
+      // 报警时间间隔
+      humidityWarning: '',
+      signalStrengthWarning: '',
+      modulationHeight: '',
+      // 经度
+      reportCycleSetting: '',
+      apn: '',
+      plmn: '',
+      leakageAlarm: '',
+      ipOne: '192',
+      ipTwo: '168',
+      ipThree: '0',
+      ipFour: '32'
+      // 纬度
+    }
+  }
 }
 </script>
 
