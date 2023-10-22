@@ -4,14 +4,24 @@
 
     <div id="panelHeader">
       <span class="t_paneltitle" id="panelTitle">设备重启</span>
-      <button id="reboot"><i>图</i><p class="t_rebootButton">重启设备</p></button>
+      <button id="reboot"><i>图</i><p class="t_rebootButton" >重启设备</p></button>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'RebootSetting'
+  name: 'RebootSetting',
+  data () {
+    return {
+      deviceIdImei: '',
+      version: '27',
+      restartCommand: '0'
+    }
+  },
+  methods: {
+
+  }
 }
 </script>
 
