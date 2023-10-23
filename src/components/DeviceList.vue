@@ -312,7 +312,7 @@ export default {
       }
     },
     pushParams (n) {
-      console.log(n)
+      console.log(n.deviceIdImei)
       this.$router.push({ path: '/MainView/AlarmInfo', query: { deviceID: n.deviceIdImei } })
     }
   },
