@@ -66,8 +66,20 @@ export default {
       ipOne: '192',
       ipTwo: '168',
       ipThree: '0',
-      ipFour: '32'
+      ipFour: '32',
+      getdeviceID: ''
     }
+  },
+  methods: {
+    async getAlarmInfo () {
+      const { data: get } = await axios.get('http://49.235.106.165:1020/equipmenContro/twelve/query/setting/parameter', { params: { deviceIdImei: this.getdeviceID, commandWord: 179 } })
+      console.log(get)
+    }
+  },
+  mounted () {
+    this.getdeviceID = this.$router.query.deviceID
+    this.getAlarmInfo()
+
   }
 }
 </script>
