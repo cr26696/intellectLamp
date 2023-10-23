@@ -113,7 +113,7 @@ export default {
     }
     #modeCurrent{
       position: absolute;
-      width: 100px;
+      width: 150px;
       height: 37px;
       left: 296px;
       float: left;
