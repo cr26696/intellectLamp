@@ -255,20 +255,20 @@
         width="180"
         align="center">
       </el-table-column>
-      <el-table-column
+        <el-table-column
         header-align="center"
         fixed="right"
         label="操作"
         width="320">
-        <router-link :to="{path:'/mainview/alarmInfo',query:{}}">
-          <el-button type="text" size="small">预警信息</el-button>
-        </router-link>
+        <template slot-scope="scope">
+        <el-button type="text" size="small" @click="pushParams(scope.row)">预警信息</el-button>
         <el-button type="text" size="small">接受日志</el-button>
         <el-button type="text" size="small">指令设置</el-button>
         <el-button type="text" size="small">详情</el-button>
         <el-button type="text" size="small">修改</el-button>
         <el-button type="text" size="small">删除</el-button>
-      </el-table-column>
+      </template>
+        </el-table-column>
     </el-table>
   </div>
 </template>
@@ -282,7 +282,8 @@ export default {
     return {
       list: [],
       deviceID: '',
-      queryRes: ''
+      queryRes: '',
+      getInfo: []
     }
   },
   methods: {
@@ -309,6 +310,10 @@ export default {
         this.list = resetL.data.list.records
         console.log(this.list)
       }
+    },
+    pushParams (n) {
+      console.log(n)
+      this.$router.push({ path: '/MainView/AlarmInfo', query: { n } })
     }
   },
   created () {

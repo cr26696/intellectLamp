@@ -74,7 +74,7 @@ export default {
   },
   methods: {
     async GPS  () {
-      const { data: res } = await axios.post('http://49.235.106.165:1020/equipmenContro/twentyTwo/send/read/GPS', { params: { deviceIdImei: '15449288861881059628769', modulationHeight: 5, maximumWarningAngle: 15 } })
+      const { data: res } = await axios.post('http://49.235.106.165:1020/equipmenContro/twentyTwo/send/read/GPS', { deviceIdImei: '15449288861881059628769', modulationHeight: 5, maximumWarningAngle: 15 })
       console.log(res)
       if (res.code === 2000) {
         this.list = res.data.list
