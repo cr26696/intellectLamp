@@ -1,9 +1,9 @@
 <template>
 
 <el-container id="container">
-  <el-header height="94px">Header</el-header>
+  <el-header height="9%">Header</el-header>
   <el-container>
-    <el-aside width="233px"><SideBar></SideBar></el-aside>
+    <el-aside width="12%"><SideBar></SideBar></el-aside>
     <el-main>
       <router-view/></el-main>
   </el-container>
