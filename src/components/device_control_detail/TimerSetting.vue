@@ -6,9 +6,21 @@
       <span class="t_paneltitle" id="panelTitle">定时调光</span>
     </div>
     <div id="timeraddTask">
-      <button class="b_task" id="addTask">+增加定时任务</button>
+      <button class="b_task" id="addTask" @click="addTask">+增加定时任务</button>
       <button class="b_task" id="readTask" style="background: rgba(239, 239, 239, 1);">读取定时调光任务</button>
     </div>
+    <el-dialog id="taskDialog"
+        title="定时调光"
+        :visible.sync="addTaskDialogVisible"
+        width="905px">
+        <div><span>任务类型：</span><input type="text"></div>
+        <div><span>亮度：</span><input type="text"></div>
+        <div><span>执行时间：</span><input type="text"></div>
+        <span id="dialogButtons">
+          <el-button @click="addTaskDialogVisible = false">取 消</el-button>
+          <el-button type="primary" @click="addTaskDialogVisible = false">确 定</el-button>
+        </span>
+    </el-dialog>
     <div id="timerTable">
       <el-table
       :data="tableData"
@@ -54,6 +66,7 @@ export default {
     return {
       lightOn: true,
       brightness: 80,
+      addTaskDialogVisible: false,
       tableData: [{
         data1: '0x2e',
         data2: '关灯指令',
@@ -76,6 +89,9 @@ export default {
     }
   },
   methods: {
+    addTask () {
+      this.addTaskDialogVisible = true
+    },
     async dimmingBrightness () {
       const { data: result } = await axios.post('http://49.235.106.165:1020/equipmenContro/there/dimmingBrightness',
         {
@@ -147,6 +163,38 @@ export default {
       position: absolute;
       right: 54px;
       border: 0;
+    }
+  }
+  #taskDialog{
+    div{
+      position: relative;
+      height: 51px;
+      margin-bottom: 15px;
+
+      span{
+        position: absolute;
+        font-size: 20px;
+        font-weight: 500;
+        line-height: 28.96px;
+        color: rgba(102, 102, 102, 1);
+        left: 39px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+      input{
+        position: absolute;
+        right:43px;
+        width: 665px;
+        height: 51px;
+        opacity: 1;
+        border-radius: 20px;
+        background: rgba(239, 239, 239, 1);
+      }
+      #dialogButtons{
+        position: relative;
+        left: 679px;
+        top: 12px;
+      }
     }
   }
   #timerTable{
