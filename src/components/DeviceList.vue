@@ -261,9 +261,9 @@
         label="操作"
         width="320">
         <template slot-scope="scope">
-        <el-button type="text" size="small" @click="pushParams(scope.row)">预警信息</el-button>
+        <el-button type="text" size="small" @click="pushParamstoAlarm(scope.row)">预警信息</el-button>
         <el-button type="text" size="small">接受日志</el-button>
-        <el-button type="text" size="small">指令设置</el-button>
+        <el-button type="text" size="small" @click="pushParamstoControl(scope.row)">指令设置</el-button>
         <el-button type="text" size="small">详情</el-button>
         <el-button type="text" size="small">修改</el-button>
         <el-button type="text" size="small">删除</el-button>
@@ -311,9 +311,13 @@ export default {
         console.log(this.list)
       }
     },
-    pushParams (n) {
+    pushParamstoAlarm (n) {
       console.log(n.deviceIdImei)
       this.$router.push({ path: '/MainView/AlarmInfo', query: { deviceID: n.deviceIdImei } })
+    },
+    pushParamstoControl (n) {
+      console.log(n.deviceIdImei)
+      this.$router.push({ path: '/MainView/DeviceControl', query: { deviceID: n.deviceIdImei } })
     }
   },
   created () {
