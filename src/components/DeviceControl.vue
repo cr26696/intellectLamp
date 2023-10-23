@@ -22,7 +22,7 @@
             <el-col :span="4"><div class="grid-content"><p class="textCategory">灯杆号</p><br><p class="textInfoContent">-</p></div></el-col>
             <el-col :span="4"><div class="grid-content"><p class="textCategory">经度</p><br><p class="textInfoContent">121.3825168185769</p></div></el-col>
             <el-col :span="4"><div class="grid-content"><p class="textCategory">控制器状态</p><br><p class="textInfoContent">·离线</p></div></el-col>
-            <el-col :span="4"><div class="grid-content"><p class="textCategory">控制器模式</p><br><p class="textInfoContent">正常模式</p></div></el-col>
+            <el-col :span="4"><div class="grid-content"><p class="textCategory">控制器模式</p><br><p class="textInfoContent">{{ chooseMode }}</p></div></el-col>
         </el-row>
         <el-row>
             <el-col :span="4"><div class="grid-content"><p class="textCategory">版本号</p><br><p class="textInfoContent">0x2e</p></div></el-col>
@@ -48,27 +48,24 @@ import TimerSetting from '@/components/device_control_detail/TimerSetting.vue'
 import ModeSetting from '@/components/device_control_detail/ModeSetting.vue'
 import RebootSetting from '@/components/device_control_detail/RebootSetting.vue'
 import CarSetting from '@/components/device_control_detail/CarSetting.vue'
+import axios from 'axios'
 
 export default {
   name: 'DeviceControl',
   data: function () {
     return {
-      deviceInfo: {
-        deviceIdImei: '',
-        version: '',
-        alarmInterva: '',
-        temperatureWarning: '',
-        humidityWarning: '',
-        lightWarning: '',
-        signalStrengthWarning: '',
-        lightPoleTiltWarning: '',
-        leakageAlarm: '',
-        reportCycleSetting: '',
-        apn: '',
-        plmn: '',
-        controllerStatusInstruction: '',
-        getDeviceId: ''
-      },
+      deviceInfo: '',
+      currentMode: '',
+      modeList: [
+        '正常模式',
+        '调试模式',
+        '远程升级模式',
+        '亮灯状态模式',
+        '报警状态模式',
+        '特殊功能模式',
+        '运输模式',
+        '注销模式'
+      ],
       panelList: [
         ['参数设置', ParamSetting],
         ['开关调节', SwitchSetting],
@@ -77,11 +74,23 @@ export default {
         ['重启设备', RebootSetting],
         ['车辆设置', CarSetting]
       ],
+      computed: {
+        chooseMode () {
+          return this.modeList[this.currentMode]
+        }
+      },
       currentPanel: ParamSetting
     }
   },
   methods: {
-
+    async resetList () {
+      const { data: resetL } = await axios.get('http://49.235.106.165:1020/equipmenContro/two/get/msg', { params: { deviceIdImei:this.getDeviceId } })
+      console.log(resetL)
+      if (resetL.code === 2000) {
+        this.list = resetL.data
+        console.log(this.list)
+      }
+    }
   },
   // created: {
 

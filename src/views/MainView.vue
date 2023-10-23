@@ -1,7 +1,13 @@
 <template>
 
 <el-container id="container">
-  <el-header height="9%">Header</el-header>
+  <el-header height="9%">
+    <div>
+      <el-image :src="mscr">
+
+      </el-image>
+    </div>
+  </el-header>
   <el-container>
     <el-aside width="12%"><SideBar></SideBar></el-aside>
     <el-main>
@@ -18,6 +24,11 @@ export default {
   name: 'MainView',
   components: {
     SideBar
+  },
+  data () {
+    return {
+      mscr: '../src/assets/icon/主logo.png'
+    }
   }
 }
 </script>
