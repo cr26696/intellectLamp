@@ -5,8 +5,7 @@
   <el-container>
     <el-aside width="233px"><SideBar></SideBar></el-aside>
     <el-main>
-      <keep-alive>
-      <router-view/></keep-alive></el-main>
+      <router-view/></el-main>
   </el-container>
 </el-container>
 

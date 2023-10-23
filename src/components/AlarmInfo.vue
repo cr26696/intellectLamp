@@ -18,7 +18,7 @@
                 <el-row>
                     <el-col :span="4"><div class="grid-content"><p class="textCategory">设备id</p><br><p class="textInfoContent">{{ deviceIdImei }}</p></div></el-col>
                     <el-col :span="4"><div class="grid-content"><p class="textCategory">版本号</p><br><p class="textInfoContent">{{ version }}</p></div></el-col>
-                    <el-col :span="4"><div class="grid-content"><p class="textCategory">灯杆号</p><br><p class="textInfoContent">{{  }}</p></div></el-col>
+                    <el-col :span="4"><div class="grid-content"><p class="textCategory">灯杆号</p><br><p class="textInfoContent">{{ '0' }}</p></div></el-col>
                     <el-col :span="4"><div class="grid-content"><p class="textCategory">控制器状态指令</p><br><p class="textInfoContent">{{ controllerStatusInstruction }}</p></div></el-col>
                     <el-col :span="4"><div class="grid-content"><p class="textCategory">报警间隔时间：</p><br><p class="textInfoContent">{{ alarmInterva }}</p></div></el-col>
                     <el-col :span="4"><div class="grid-content"><p class="textCategory">温度传感器报警阙值：</p><br><p class="textInfoContent">{{ temperatureWarning }}</p></div></el-col>
@@ -46,6 +46,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   name: 'AlarmInfo',
   data: function () {
@@ -72,14 +73,31 @@ export default {
   },
   methods: {
     async getAlarmInfo () {
-      const { data: get } = await axios.get('http://49.235.106.165:1020/equipmenContro/twelve/query/setting/parameter', { params: { deviceIdImei: this.getdeviceID, commandWord: 179 } })
+      const { data: get } = await axios.post('http://49.235.106.165:1020/equipmenContro/twelve/query/setting/parameter', { deviceIdImei: this.getdeviceID, commandWord: '179' })
       console.log(get)
+      this.deviceIdImei = get.deviceIdImei
+      this.version = get.version
+      this.alarmInterva = get.alarmInterva
+      this.temperatureWarning = get.temperatureWarning
+      this.humidityWarning = get.humidityWarning
+      this.lightWarning = get.lightWarning
+      this.signalStrengthWarning = get.signalStrengthWarning
+      this.lightPoleTiltWarning = get.lightPoleTiltWarning
+      this.leakageAlarm = get.leakageAlarm
+      this.reportCycleSetting = get.reportCycleSetting
+      this.apn = get.apn
+      this.plmn = get.plmn
+      this.controllerStatusInstruction = get.controllerStatusInstruction
+      this.ipOne = get.ipOne
+      this.ipTwo = get.ipTwo
+      this.ipThree = get.ipThree
+      this.ipFour = get.ipFour
     }
   },
   mounted () {
-    this.getdeviceID = this.$router.query.deviceID
+    this.getdeviceID = this.$route.query.deviceID
+    console.log(this.getdeviceID)
     this.getAlarmInfo()
-
   }
 }
 </script>
