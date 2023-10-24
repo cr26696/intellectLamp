@@ -12,6 +12,7 @@
       <el-row :gutter="20" id="panelNav">
         <el-col :span="4" v-for="item in panelList" :key="item.id">
           <div class="grid-content">
+            <div id="button"><img :src="'@/assets/icon/' + item[2] + 'png'" alt=""></div>
             <button class="b_header" @click="currentPanel = item[1]">{{item[0]}}</button>
           </div>
         </el-col>
@@ -70,12 +71,12 @@ export default {
         getDeviceId: ''
       },
       panelList: [
-        ['参数设置', ParamSetting],
-        ['开关调节', SwitchSetting],
-        ['定时调节', TimerSetting],
-        ['模式设置', ModeSetting],
-        ['重启设备', RebootSetting],
-        ['车辆设置', CarSetting]
+        ['参数设置', ParamSetting, '参数'],
+        ['开关调节', SwitchSetting, '开关'],
+        ['定时调节', TimerSetting, '定时'],
+        ['模式设置', ModeSetting, '模式'],
+        ['重启设备', RebootSetting, '重启'],
+        ['车辆设置', CarSetting, '记录']
       ],
       currentPanel: ParamSetting
     }

@@ -14,7 +14,7 @@
       <input type="text">
     </div>
     <div id="panelSubmit">
-      <button class="b_submit"><i style="float: left;">图</i><span>提交</span></button>
+      <button class="b_submit"><span style="width: 42px;height:42px"><img :src=iSubmit alt=""></span><span>提交</span></button>
     </div>
   </div>
 </template>
@@ -24,6 +24,7 @@ export default {
   name: 'CarSetting',
   data () {
     return {
+      iSubmit: require('@/assets/icon/提交按钮.png'),
       monitorSwitch: 'true'
     }
   }
