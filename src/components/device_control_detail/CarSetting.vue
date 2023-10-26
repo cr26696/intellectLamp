@@ -14,17 +14,20 @@
       <input type="text">
     </div>
     <div id="panelSubmit">
-      <button class="b_submit"><span style="width: 42px;height:42px"><img :src=iSubmit alt=""></span><span>提交</span></button>
+      <BtSubmit></BtSubmit>
     </div>
   </div>
 </template>
 
 <script>
+import BtSubmit from '@/components/button/BtSubmit.vue'
 export default {
   name: 'CarSetting',
+  components: {
+    BtSubmit
+  },
   data () {
     return {
-      iSubmit: require('@/assets/icon/提交按钮.png'),
       monitorSwitch: 'true'
     }
   }
@@ -128,16 +131,7 @@ export default {
 }.pos_topCenter{
   transform: translateX(-50%);
 }
-//按钮样式--------------------------------------------
-.b_submit{//提交
-  position: relative;
-  width: 232px;
-  height: 60px;
-  opacity: 1;
-  margin: 0 auto;
-  border-radius: 15px;
-  background: rgba(30, 170, 231, 1);
-}
+
 //字体样式--------------------------------------------
 .t_panelTitle{
   font-size: 25px;
@@ -156,6 +150,5 @@ export default {
   font-weight: 500;
   line-height: 30.17px;
   color: rgba(255, 255, 255, 1);
-  text-align: left;
 }
 </style>

@@ -85,7 +85,7 @@ export default {
   },
   methods: {
     async resetList () {
-      const { data: resetL } = await axios.get('http://49.235.106.165:1020/equipmenContro/two/get/msg', { params: { deviceIdImei:this.getDeviceId } })
+      const { data: resetL } = await axios.get('http://49.235.106.165:1020/equipmenContro/two/get/msg', { params: { deviceIdImei: this.getDeviceId } })
       console.log(resetL)
       if (resetL.code === 2000) {
         this.list = resetL.data
