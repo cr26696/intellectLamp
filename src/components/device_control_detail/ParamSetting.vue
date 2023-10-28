@@ -83,7 +83,7 @@ export default {
     async setparameters () {
       const { data: res } = await axios.post('http://49.235.106.165:1020/equipmenContro/ten/set/parameters',
         {
-          deviceIdImei: '15449288861881059628769',
+          deviceIdImei: '15449288866266066304296',
           version: '17',
           temperatureWarning: '30',
           lightWarning: '33',
@@ -98,18 +98,20 @@ export default {
           leakageAlarm: '40',
           ipOne: '192',
           ipTwo: '168',
-          ipThree: '0',
-          ipFour: '32'
+          ipThere: '0',
+          ipFour: '32',
+          alarmInterval: '30'
         })
       console.log(res)
     },
     async queryparameters () {
-      const { data: res } = await axios.post('http://49.235.106.165:1020/equipmenContro/twelve/query/setting/parameter', { deviceIdImei: '15449288861881059628769', commandWord: '179' })
+      const { data: res } = await axios.post('http://49.235.106.165:1020/equipmenContro/twelve/query/setting/parameter', { deviceIdImei: '15449288866266066304296', commandWord: '179' })
       console.log(res)
     }
   },
   created () {
     this.queryparameters()
+    this.setparameters()
   }
 }
 </script>

@@ -19,18 +19,18 @@
       </el-row>
       <div id="deviceInfoTable">
         <el-row>
-            <el-col :span="4"><div class="grid-content"><p class="textCategory">设备id</p><br><p class="textInfoContent">861817066805433</p></div></el-col>
+            <el-col :span="4"><div class="grid-content"><p class="textCategory">设备id</p><br><p class="textInfoContent">{{ deviceID }}</p></div></el-col>
             <el-col :span="4"><div class="grid-content"><p class="textCategory">灯杆号</p><br><p class="textInfoContent">-</p></div></el-col>
-            <el-col :span="4"><div class="grid-content"><p class="textCategory">经度</p><br><p class="textInfoContent">121.3825168185769</p></div></el-col>
-            <el-col :span="4"><div class="grid-content"><p class="textCategory">控制器状态</p><br><p class="textInfoContent">·离线</p></div></el-col>
+            <el-col :span="4"><div class="grid-content"><p class="textCategory">经度</p><br><p class="textInfoContent">-</p></div></el-col>
+            <el-col :span="4"><div class="grid-content"><p class="textCategory">控制器状态</p><br><p class="textInfoContent">{{ controllerOnlineStatus }}</p></div></el-col>
             <el-col :span="4"><div class="grid-content"><p class="textCategory">控制器模式</p><br><p class="textInfoContent">{{ chooseMode }}</p></div></el-col>
         </el-row>
         <el-row>
-            <el-col :span="4"><div class="grid-content"><p class="textCategory">版本号</p><br><p class="textInfoContent">0x2e</p></div></el-col>
-            <el-col :span="4"><div class="grid-content"><p class="textCategory">lora模块信道</p><br><p class="textInfoContent">0-110</p></div></el-col>
-            <el-col :span="4"><div class="grid-content"><p class="textCategory">纬度</p><br><p class="textInfoContent">31.16577853732639</p></div></el-col>
-            <el-col :span="4"><div class="grid-content"><p class="textCategory">灯具状态</p><br><p class="textInfoContent">·亮</p></div></el-col>
-            <el-col :span="4"><div class="grid-content"><p class="textCategory">lora地址</p><br><p class="textInfoContent">0-65535</p></div></el-col>
+            <el-col :span="4"><div class="grid-content"><p class="textCategory">版本号</p><br><p class="textInfoContent">{{ version }}</p></div></el-col>
+            <el-col :span="4"><div class="grid-content"><p class="textCategory">lora模块信道</p><br><p class="textInfoContent">{{ loraChannel }}</p></div></el-col>
+            <el-col :span="4"><div class="grid-content"><p class="textCategory">纬度</p><br><p class="textInfoContent">-</p></div></el-col>
+            <el-col :span="4"><div class="grid-content"><p class="textCategory">灯具状态</p><br><p class="textInfoContent">{{ lampState }}</p></div></el-col>
+            <el-col :span="4"><div class="grid-content"><p class="textCategory">lora地址</p><br><p class="textInfoContent">{{ loraAddress }}</p></div></el-col>
         </el-row>
       </div>
       <div id="line"></div>
@@ -55,8 +55,17 @@ export default {
   name: 'DeviceControl',
   data: function () {
     return {
+      chooseMode: '',
       deviceInfo: '',
       currentMode: '',
+      deviceID: '',
+      controllerOnlineStatus: '',
+      version: '',
+      lampState: '',
+      loraAddress: '',
+      loraChannel: '',
+      list: [],
+      loraT: [],
       modeList: [
         '正常模式',
         '调试模式',
@@ -81,6 +90,23 @@ export default {
         }
       },
       currentPanel: ParamSetting
+      // deviceIdImei: '',
+      // groupNumberOne: '',
+      // groupNumberTwo: '',
+      // reportCycleSetting: '',
+      // alarmInterval: '',
+      // apn: '',
+      // temperatureWarning: '',
+      // humidityWarning: '',
+      // lightWarning: '',
+      // signalStrengthWarning: '',
+      // lightPoleTiltWarning: '',
+      // leakageAlarm: '',
+      // controllerStatusInstruction: '',
+      // ipOne: '',
+      // ipTwo: '',
+      // ipThree: '',
+      // ipFour: ''
     }
   },
   methods: {
@@ -88,8 +114,22 @@ export default {
       const { data: resetL } = await axios.get('http://49.235.106.165:1020/equipmenContro/two/get/msg', { params: { deviceIdImei: this.getDeviceId } })
       console.log(resetL)
       if (resetL.code === 2000) {
+        this.deviceID = this.getDeviceId
         this.list = resetL.data
         console.log(this.list)
+        this.controllerOnlineStatus = this.list.list.controllerOnlineStatus
+        this.chooseMode = this.list.list.controllerMode
+        this.version = this.list.list.version
+        this.lampState = this.list.list.lampState
+      }
+    },
+    async getloraInfo () {
+      const { data: lora } = await axios.post('http://49.235.106.165:1020/equipmenContro/twentyThree/set/lora/module', { deviceIdImei: this.getDeviceId, commandWord: '101' })
+      console.log(lora)
+      if (lora.code === 2000) {
+        this.loraT = lora.data
+        this.loraChannel = this.lora.channel
+        this.loraAddress = this.lora.address
       }
     }
   },
@@ -99,6 +139,8 @@ export default {
   mounted () {
     this.getDeviceId = this.$route.query.deviceID
     console.log(this.getDeviceId)
+    this.resetList()
+    this.getloraInfo()
   }
 }
 </script>
